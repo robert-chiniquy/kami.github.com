@@ -36,6 +36,10 @@ just to name a few - I've experienced the startup culture, I've experienced the
 Cloudkick), I've [launched a product][4] and I've learned how things
 work at a relatively large company.
 
+<div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"><img
+src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
+class="inline"></a><br />Cloudkick team in 2010 (missing Russel Haering)<br /></div>
+
 Besides that I've also meet a lot of great people and made a lot of great
 friends with which I hope to stay in touch for years to come.
 
@@ -80,6 +84,9 @@ I had plenty of opportunities to join an existing early and not so early stage
 startup, but I believe that starting my own thing and being a founder will
 allow me to learn more than I otherwise could.
 
+<div class="imginline"><img src="/images/2013-06-08-new-challenges/raxsf.png"
+class="inline"><br />Rackspace San Francisco logo by Logan Welliver<br /></div>
+
 ### Why now?
 
 I believe now is the right time for me, because are multiple things which will
@@ -116,10 +123,6 @@ perspective it makes sense to eliminate other things which could make it even
 harder and reduce number of people you could unintentionally hurt (there are
 plenty of stories about damaged or broken relationships).
 
-### What is the first thing I'm going to work on?
-
-TBW
-
 ### What are the next steps?
 
 When I get back to Slovenia I will first focus on building a MVP and getting it
@@ -127,6 +130,10 @@ out to the users as soon as possible. There will obviously also be a lot of
 other non-product development effort related to starting and growing a startup
 (legal, incorporating, marketing, ...) but in the end it will all boil down to
 to be continuous iteration of the [Build-Measure-Learn][2] process.
+
+<div class="imginline"><img src="/images/2013-06-08-new-challenges/ls_cycle.jpeg"
+class="inline"><br />Lean Startup Cycle per Lean Startup Book<br /></div>
+
 
 I will also try to do a better job with my blog. I will try to write more tech
 related articles and how my startup is evolving and what I have learned during
@@ -138,3 +145,6 @@ this process.
 [4]: http://www.rackspace.com/blog/keep-track-of-your-services-and-applications-with-the-new-rackspace-service-registry/
 [5]: http://www.rackspace.com/cloud/monitoring/
 [6]: http://rackertalent.com/sanfrancisco/
+
+[20]: /images/2013-06-08-new-challenges/ck_team_2010_1.jpg
+[21]: /images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg
