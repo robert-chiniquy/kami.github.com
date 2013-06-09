@@ -1,6 +1,6 @@
 ---
 layout: post
-title: New challenges
+title: New Challenges
 published: true
 tags:
   - personal
