@@ -36,9 +36,9 @@ just to name a few - I've experienced the startup culture, I've experienced the
 Cloudkick), I [launched a product][4] and I learned how things work at a
 relatively large company.
 
-<div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"
+<div class="imginline"><a href="/images/2013-06-09-time-for-new-challenges/ck_team_2010_1.jpg"
 class="fancybox" title="Cloudkick team in 2010 (missing Russel Haering)"><img
-src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
+src="/images/2013-06-09-time-for-new-challenges/ck_team_2010_1_thumb.jpg"
 class="inline"></a><span class="image-caption">Cloudkick team in 2010
 (missing Russel Haering)</span></div>
 
@@ -86,7 +86,7 @@ I had plenty of opportunities to join an existing early and not so early stage
 startup, but I believe that starting my own thing and being a founder will
 allow me to learn more than I otherwise could.
 
-<div class="imginline"><img src="/images/2013-06-08-new-challenges/raxsf.png"
+<div class="imginline"><img src="/images/2013-06-09-time-for-new-challenges/raxsf.png"
 class="inline"><span class="image-caption">Rackspace San Francisco logo by Logan
 Welliver</span></div>
 
@@ -116,7 +116,7 @@ would simple call those things "life".
   me a better person and engineer down the road.
 
 <div class="imginline"><img
-src="/images/2013-06-08-new-challenges/zen_of_python.png"
+src="/images/2013-06-09-time-for-new-challenges/zen_of_python.png"
 class="inline"><span class="image-caption"><a
 href="http://www.python.org/dev/peps/pep-0020/">The Zen of Python</a>, emphasising "Now is better than never"</span></div>
 
@@ -140,7 +140,7 @@ other non-product development effort related to starting and growing a startup
 (legal, incorporating, marketing, ...) but in the end it will all boil down to
 to be continuous iteration of the [Build-Measure-Learn][2] process.
 
-<div class="imginline"><img src="/images/2013-06-08-new-challenges/ls_cycle.jpeg"
+<div class="imginline"><img src="/images/2013-06-09-time-for-new-challenges/ls_cycle.jpeg"
 class="inline"><span class="image-caption">Lean Startup Cycle per Lean Startup
 Book</span></div>
 
@@ -155,5 +155,5 @@ this process.
 [5]: http://www.rackspace.com/cloud/monitoring/
 [6]: http://rackertalent.com/sanfrancisco/
 
-[20]: /images/2013-06-08-new-challenges/ck_team_2010_1.jpg
-[21]: /images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg
+[20]: /images/2013-06-09-time-for-new-challenges/ck_team_2010_1.jpg
+[21]: /images/2013-06-09-time-for-new-challenges/ck_team_2010_1_thumb.jpg
