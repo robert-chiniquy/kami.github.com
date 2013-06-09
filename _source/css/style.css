@@ -176,3 +176,8 @@ img.inline {
   border: none !important;
   margin-bottom: 8px;
 }
+
+.image-caption {
+  display: block;
+  margin-top: 10px;
+}

@@ -39,7 +39,8 @@ relatively large company.
 <div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"
 class="fancybox"><img
 src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
-class="inline"></a><br />Cloudkick team in 2010 (missing Russel Haering)<br /></div>
+class="inline"></a><span class="image-caption">Cloudkick team in 2010
+(missing Russel Haering)</span></div>
 
 Besides all of that, I' also meet a lot of great people and made a lot of great
 friends with whom I hope to stay in touch for years to come.
@@ -86,7 +87,8 @@ startup, but I believe that starting my own thing and being a founder will
 allow me to learn more than I otherwise could.
 
 <div class="imginline"><img src="/images/2013-06-08-new-challenges/raxsf.png"
-class="inline"><br />Rackspace San Francisco logo by Logan Welliver<br /></div>
+class="inline"><span class="image-caption">Rackspace San Francisco logo by Logan
+Welliver</span></div>
 
 ### Why now?
 
@@ -134,8 +136,8 @@ other non-product development effort related to starting and growing a startup
 to be continuous iteration of the [Build-Measure-Learn][2] process.
 
 <div class="imginline"><img src="/images/2013-06-08-new-challenges/ls_cycle.jpeg"
-class="inline"><br />Lean Startup Cycle per Lean Startup Book<br /></div>
-
+class="inline"><span class="image-caption">Lean Startup Cycle per Lean Startup
+Book</span></div>
 
 I will also try to do a better job with my blog. I will try to write more tech
 related articles and how my startup is evolving and what I have learned during
