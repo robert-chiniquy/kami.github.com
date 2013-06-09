@@ -9,15 +9,7 @@
         <meta name="google-site-verification" content="ynmOt0WzX8sVTNjmph4-tcmcUq8GzD3ao2AqpUJVlcY" />
 
         <title>tomaz.me - </title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="/javascript/jquery.tipsy.js"></script>
-        <script type='text/javascript'>
-          $(window).load(function()
-          {
-            $('img[alt]').tipsy({title: 'alt' });
-            $('a[title]').tipsy({title: 'title', gravity: 's'});
-          });
-        </script>
+        <link rel="stylesheet" href="/css/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
     </head>
     <body>
         <div id="links" class="menu">
@@ -68,6 +60,24 @@
             </div>
         </div>
         <div id="footer">Powered by <a href="https://github.com/mojombo/jekyll" target="_blank" title="Yeah, if you are a Pythonista don't get too excited, it's Ruby">jekyll</a>, design forked from <a href="http://github.com/mrtazz/blog" target="_blank">Daniel Schauenberg</a></div>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/jquery.tipsy.js"></script>
+        <script type="text/javascript" src="/javascript/jquery.fancybox.pack.js?v=2.1.4"></script>
+        <script type='text/javascript'>
+          $(window).load(function()
+          {
+            $('img.tipsy').tipsy({title: 'alt' });
+            $('a.tipsy').tipsy({title: 'title', gravity: 's'});
+            $('.fancybox').fancybox({
+                helpers: {
+                    title : {
+                        type : 'float'
+                    }
+                }
+            });
+          });
+        </script>
         <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
