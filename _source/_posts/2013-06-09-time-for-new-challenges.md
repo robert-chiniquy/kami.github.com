@@ -20,10 +20,10 @@ that.
 
 ### History and Background
 
-The last couple of years were very exciting for me. In 2010 I joined the Y-Combinator
-startup [Cloudkick][3]. Later, when Cloudkick was acquired by Rackspace,
-I relocated to San Francisco to work for Rackspace in their new [San
- Francisco office][6].
+The last couple of years were very exciting for me. In 2010 I joined the
+Y-Combinator startup [Cloudkick][3]. Later, when Cloudkick was acquired by
+Rackspace, I relocated to San Francisco to work for Rackspace in their new
+[San Francisco office][6].
 
 During that time I had a chance to work with some of the best people in the
 industry, acquired a lot of new knowledge and experienced a lot of things
@@ -61,9 +61,9 @@ number of side projects, websites and ran many different online communities,
 but nothing on which I would focus full-time I would personally call a
 "real startup".
 
-At Cloudkick, I experienced first hand what it was like working a small and
-tightly connected team, building a product which makes life easier for
-customers. The experience just made me want to do it even more.
+At Cloudkick, I experienced first hand what it was like working with a
+small and tightly connected team, building a product which makes life
+easier for customers. The experience just made me want to do it even more.
 
 ### Why my own startup?
 
@@ -103,11 +103,11 @@ would simple call those things "life".
 * I'm not settled down or too tied to a particular location yet
 * I don't have a family yet
 * I'm still relatively young and don't have a lot to lose, but I have plenty to
-  gain (learning new things)
+  gain (learn new things)
 * I believe I have the right co-founder. We've known each other for a long time,
   we both share the same core values, but we both have different background
   and skills and bring different perspective to the table.
-  I think diversity is very important and all of that makes us a great time.
+  I think diversity is very important and all of that makes us a great team.
 * Most of the things I do well now I will still be able to to well couple of
   years in the future. In fact, I would argue that I will be able to do those
   things better because running my own startup will allow me to learn plenty of
@@ -135,7 +135,6 @@ plenty of stories about damaged or broken relationships).
 
 When I get back to Slovenia I will first focus on building an MVP and getting it
 out to users as soon as possible. There will obviously also be a lot of
-out to the users as soon as possible. There will obviously also be a lot of
 other non-product development effort related to starting and growing a startup
 (legal, incorporating, marketing, ...) but in the end it will all boil down to
 to be continuous iteration of the [Build-Measure-Learn][2] process.
