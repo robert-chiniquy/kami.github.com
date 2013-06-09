@@ -36,7 +36,8 @@ just to name a few - I've experienced the startup culture, I've experienced the
 Cloudkick), I [launched a product][4] and I learned how things work at a
 relatively large company.
 
-<div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"><img
+<div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"
+class="fancybox"><img
 src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
 class="inline"></a><br />Cloudkick team in 2010 (missing Russel Haering)<br /></div>
 
