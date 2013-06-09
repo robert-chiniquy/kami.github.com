@@ -115,6 +115,11 @@ would simple call those things "life".
   different perspective. I believe that overall those things will also help make
   me a better person and engineer down the road.
 
+<div class="imginline"><img
+src="/images/2013-06-08-new-challenges/zen_of_python.png"
+class="inline"><span class="image-caption"><a
+href="http://www.python.org/dev/peps/pep-0020/">The Zen of Python</a>, emphasising "Now is better than never"</span></div>
+
 I want to add that none of the things listed above are real blockers for
 running a (successful) startup. Quite the contrary, I know people who fit in
 few of the "categories" described above who are still very successful at
