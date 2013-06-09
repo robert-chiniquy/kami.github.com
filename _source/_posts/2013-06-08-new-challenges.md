@@ -37,7 +37,7 @@ Cloudkick), I [launched a product][4] and I learned how things work at a
 relatively large company.
 
 <div class="imginline"><a href="/images/2013-06-08-new-challenges/ck_team_2010_1.jpg"
-class="fancybox"><img
+class="fancybox" title="Cloudkick team in 2010 (missing Russel Haering)"><img
 src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
 class="inline"></a><span class="image-caption">Cloudkick team in 2010
 (missing Russel Haering)</span></div>

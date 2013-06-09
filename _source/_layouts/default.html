@@ -57,9 +57,15 @@
         <script type='text/javascript'>
           $(window).load(function()
           {
-            $('img[alt]').tipsy({title: 'alt' });
-            $('a[title]').tipsy({title: 'title', gravity: 's'});
-            $('.fancybox').fancybox();
+            $('img.tipsy').tipsy({title: 'alt' });
+            $('a.tipsy').tipsy({title: 'title', gravity: 's'});
+            $('.fancybox').fancybox({
+                helpers: {
+                    title : {
+                        type : 'float'
+                    }
+                }
+            });
           });
         </script>
         {% include analytics.html %}
