@@ -42,7 +42,7 @@ src="/images/2013-06-08-new-challenges/ck_team_2010_1_thumb.jpg"
 class="inline"></a><span class="image-caption">Cloudkick team in 2010
 (missing Russel Haering)</span></div>
 
-Besides all of that, I' also meet a lot of great people and made a lot of great
+Besides all of that, I also met a lot of great people and made a lot of great
 friends with whom I hope to stay in touch for years to come.
 
 All of that helped me to become not just a better engineer but a better person
