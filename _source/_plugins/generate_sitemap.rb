@@ -236,19 +236,25 @@ module Jekyll
       date = File.mtime(path)
       latest_date = find_latest_date(date, site, page_or_post)
 
-      if @last_modified_post_date == nil
-        # This is a post
-        lastmod.text = latest_date.iso8601
+      ## TODO: Open a PR opstrean
+      if page_or_post.data['layout'] == 'post' and page_or_post.instance_of?(Post)
+        lastmod.text = page_or_post.date.iso8601
       else
-        # This is a page
-        if posts_included?(page_or_post.name)
-          # We want to take into account the last post date
-          final_date = greater_date(latest_date, @last_modified_post_date)
-          lastmod.text = final_date.iso8601
-        else
+        if @last_modified_post_date == nil
+          # This is a post
           lastmod.text = latest_date.iso8601
+        else
+          # This is a page
+          if posts_included?(page_or_post.name)
+            # We want to take into account the last post date
+            final_date = greater_date(latest_date, @last_modified_post_date)
+            lastmod.text = final_date.iso8601
+          else
+            lastmod.text = latest_date.iso8601
+          end
         end
       end
+
       lastmod
     end
 
