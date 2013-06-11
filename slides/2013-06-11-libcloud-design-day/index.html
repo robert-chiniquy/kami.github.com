@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Libcloud Design Day | Rackspace SF office, June 11th, 2013</title>
+
+    <meta charset='utf-8'>
+    <script src='./slides.js'></script>
+
+    <script src="./syntaxhighlighter/scripts/shCore.js" type="text/javascript"></script>
+    <script src="./syntaxhighlighter/scripts/shBrushPython.js" type="text/javascript"></script>
+
+    <link href="./syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="./syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+
+
+  </style>
+  <body style='display: none'>
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script>
+
+    <section class='slides layout-regular template-rax'>
+      <article class="cover">
+          <img class='centered' style='height: 250px; margin-top:40px; margin-bottom: -140px;' src='images/libcloud-logo.png'>
+        <h1>
+          Libcloud Design Day
+        </h1>
+        <p>
+          Tomaz Muraus
+          <br/ >
+          Rackspace SF office, June 11th, 2013
+        </p>
+      </article>
+
+      <article>
+        <h3>Today's objectives</h3>
+          <ul>
+            <li>Get feedback about Libcloud usage and weaknesses</li>
+            <li>Brainstorm possible solutions</li>
+            <li>Try to agree on a solution and prioritize implementation</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Agenda</h3>
+          <ul>
+            <li>Current state of the art</li>
+            <li>Current weak / pain points</li>
+            <li>Addressing current pain points</li>
+          </ul>
+          <p>Whole thing is interactive so please provide your feedback in real time!</p>
+      </article>
+
+      <article>
+        <h3>Current state of the art (code)</h3>
+          <ul>
+            <li>Four primary APIs - compute, storage, loadbalancer, dns</li>
+            <li>A lot of drivers</li>
+            <li>Support for multiple Python versions (2.5 to 3.3)</li>
+            <li>Good abstraction around async APIs</li>
+            <li>Good pagination abstraction</li>
+            <li>Healthy number of releases</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Current state of the art - releases</h3>
+        <img src="images/lc_releases.png" class="centered" />
+      </article>
+
+      <article>
+        <h3>Current state of the art (community)</h3>
+          <ul>
+            <li>Healthy and steady number of external contributions and contributors</li>
+            <li>We could do better with committer contributions</li>
+            <li>Some providers have a "go to person" for their Libcloud driver</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Current state of the art - contributors</h3>
+        <img src="images/issues_reporters.png" class="centered" />
+      </article>
+
+      <article>
+        <h3>Current weak / pain points</h3>
+          <ul>
+            <li>Using providers with multiple regions</li>
+            <li>Provider capability discovery</li>
+            <li>Exception handling in methods which perform multiple API calls</li>
+            <li>Documentation</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Using providers with multiple regions</h3>
+        <p>Currently</p>
+        <pre class="brush: python">from libcloud.compute.types import Provider
+from libcloud.compute.providers import get_driver
+
+Cls1 = get_driver(Provider.RACKSPACE_NOVA_LON)
+Cls2 = get_driver(Provider.RACKSPACE_NOVA_DFW)
+
+driver1 = Cls1('username', 'api key')
+driver2 = Cls2('username', 'api key')
+</pre>
+
+      <ul>
+        <li>One driver per region</li>
+        <li>Hard to manage, not user friendly</li>
+        <li>Need to release a new version if provider adds a region*</li>
+      </ul>
+      <p>* In some cases impossible to avoid even with new approach</p>
+      </article>
+
+      <article>
+        <h3>Using providers with multiple regions</h3>
+        <p>In trunk</p>
+        <pre class="brush: python">from libcloud.compute.types import Provider
+from libcloud.compute.providers import get_driver
+
+Cls = get_driver(Provider.RACKSPACE)
+
+driver1 = Cls('username', 'api key', datacenter='lon')
+driver2 = Cls('username', 'api key', datacenter='dfw')
+</pre>
+
+      <ul>
+        <li>Big Improvement over current approach</li>
+        <li>Backward incompatible</li>
+        <li>Not fully finished yet</li>
+      </ul>
+      </article>
+
+      <article>
+        <h3>Provider capability discovery</h3>
+          <ul>
+            <li>Not straightforward to detect which methods each provider supports</li>
+            <li>We have docstrings, but that's messy</li>
+            <li>Maybe use zope.interface (again)?</li>
+            <li>ABC?</li>
+            <li>Suggestions welcome</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Exception handling in methods which perform multiple API calls</h3>
+          <ul>
+            <li>Simple example - create_node in EC2 compute driver:
+              <ul>
+                <li>1. Create a node</li>
+                <li>2. Create a tag 'name' for the created node</li>
+              </ul>
+            </li>
+            <li>What happens if #2 fails?</li>
+            <li>Currently it's non-fatal / we just ignore it</li>
+            <li>Should propagate exception to the user and provide a way to rollback / get back to the consistent state</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Documentation</h3>
+          <ul>
+            <li>Big weak point</li>
+            <li>It's in SVN, everyone can and is welcome to contribute</li>
+            <li>Should do a "documentation sprint"</li>
+          </ul>
+      </article>
+
+      <article>
+        <h3>Misc</h3>
+          <ul>
+            <li>Dropping Python 2.5 support</li>
+            <li>Pricing data distribution</li>
+            <li>Test improvements</li>
+            <li>Async support in the core</li>
+            <li>Move to Git - decrease barrier to entry</li>
+          </ul>
+      </article>
+
+      <article>
+        <h1>Thank you</h1>
+        <ul>
+          <li>Website: <a href="http://libcloud.apache.org/">http://libcloud.apache.org</a></li>
+          <li>Docs: <a href="http://libcloud.apache.org/docs/">http://libcloud.apache.org/docs/</a>
+          <li>Mailing lists: <a href="http://libcloud.apache.org/devinfo.html">{users,dev}@libcloud.apache.org</a></li>
+          <li>IRC: #libcloud on irc.freenode.net</li>
+        </ul>
+      </article>
+    </section>
+  </body>
+</html>
