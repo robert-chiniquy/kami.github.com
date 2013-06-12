@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css">
+        <link href="/css/syntax.css" media="screen" rel="stylesheet" type="text/css">
+        <link href="/css/tipsy.css" media="screen" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+        <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="tomaz.me feed" />
+        <meta name="google-site-verification" content="ynmOt0WzX8sVTNjmph4-tcmcUq8GzD3ao2AqpUJVlcY" />
+        <meta name="description" content="Tomaz Muraus' personal blog - technology, distributed systems, open source, startups and life">
+        <meta name="author" content="Tomaz Muraus">
+
+        <title>Libcloud Design Day Recap (improving Libcloud and plans for the future) | tomaz.me</title>
+        <link rel="stylesheet" href="/css/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    </head>
+    <body>
+        <div id="links" class="menu">
+            <ul class="nobullet">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/archive.html">Archive</a></li>
+                <li><a href="/atom.xml">Feed</a></li>
+                <li><a href="/about.html">About</a></li>
+
+                <li><br /></li>
+                <li class="title">Find me on</li>
+                <li><img class="no-border" src="/images/icons/twitter.gif" /> <a href="http://twitter.com/KamiSLO">Twitter</a></li>
+                <li><img class="no-border" src="/images/icons/google_plus.png" /> <a href="https://plus.google.com/106838062648597435631/about">Google+</a></li>
+                <li><img class="no-border" src="/images/icons/github.png" /> <a href="http://github.com/Kami">Github</a></li>
+                <li><img class="no-border" src="/images/icons/launchpad.png" /> <a href="https://launchpad.net/~tomaz-muraus">Launchpad</a></li>
+                <li><img class="no-border" src="/images/icons/linkedin.gif" /> <a href="http://www.linkedin.com/in/tomazmuraus">LinkedIn</a></li>
+                <li><img class="no-border" src="/images/icons/mb.png" /> <a href="https://masterbranch.com/tomaz.muraus">MasterBranch</a></li>
+
+                <li><br /></li>
+                <li class="title">Friends and other blogs</li>
+                <li><a href="http://russellhaering.com/">Russell's blog</a></li>
+                <li><a href="http://journal.paul.querna.org/">Paul's journal</a></li>
+                <li><a href="http://geoff.greer.fm/">Geoff's site</a></li>
+
+                <li><br /></li>
+                <li class="title">Currently reading and recently read</li>
+              </ul>
+              <div id="w588a78173c8fafe30783c4f58f6dd760"></div>
+              <script type="text/javascript" charset="UTF-8" src="http://www.librarything.com/widget_get.php?userid=KamiSLO&theID=w588a78173c8fafe30783c4f58f6dd760"></script><noscript><a href="http://www.librarything.com/profile/KamiSLO">My Library</a> at <a href="http://www.librarything.com">LibraryThing</a></noscript>
+        </div>
+        <div id="wrapper">
+            <div id="header">
+                <div class="logo"></div>
+                <h1><a href="/index.html">computers, programming, ponies and snakes.</a></h1>
+            </div>
+            <div id="content">
+                <div class="postdateheading"> Jun 12, 2013 </div>
+<div class="postcontent">
+    <h2 id='libcloud_design_day_recap_improving_libcloud_and_plans_for_the_future'><a href='/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html'>Libcloud Design Day Recap (improving Libcloud and plans for the future)</a></h2>
+
+<p>Yesterday we hosted <a href='https://lcdesignday.eventbrite.com'>Libcloud Design Day and Meetup</a> at the <a href='http://rackertalent.com/sanfrancisco/'>Rackspace San Francisco office</a>.</p>
+
+<p>This blog post includes a short recap of main topics we covered. It&#8217;s assembled mostly from my <a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'>Libcloud mailing list post</a>.</p>
+
+<p>The goal of the event was to sit down with the <a href='https://libcloud.apache.org/'>Libcloud</a> users and developers, indicate current biggest pain points and weaknesses and brainstorm about possible solutions.</p>
+
+<p>Event was relatively small, but we had a good sample set of Libcloud developers and user.</p>
+<div class='imginline'><a class='fancybox' href='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day.jpg' title='Photo taken at the event'><img class='inline' src='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day_thumb.jpg' /></a><span class='image-caption'>Photo taken at the event</span></div>
+<p>Here is an incomplete list of people who have attended the event:</p>
+
+<ul>
+<li><a href='http://journal.paul.querna.org/'>Paul Querna</a> (of Apache fame, also Libcloud committer)</li>
+
+<li><a href='https://github.com/jedsmith/'>Jed Smith</a> (Libcloud committer)</li>
+
+<li><a href='http://alexgaynor.net/'>Alex Gaynor</a> (PyPy, Django, Topaz, etc. contributor)</li>
+
+<li><a href='http://glyph.twistedmatrix.com/'>Glyph Lefkowitz</a> (<a href='https://twistedmatrix.com/trac/'>Twisted</a> creator)</li>
+
+<li><a href='http://dreid.org/'>David Reid</a> (Twisted contributor)</li>
+
+<li>Chris from <a href='https://mist.io/'>mist.io</a> (mist.io uses Libcloud with many different providers)</li>
+
+<li>Rick from Google working on the <a href='https://cloud.google.com/products/compute-engine'>Google Compute Engine</a> driver</li>
+</ul>
+
+<p>You might recognize some of the names above - we were very happy to have some very well known and knowledgeable people from the Python world to join us.</p>
+
+<h3 id='pricing_data_distribution'>Pricing data distribution</h3>
+
+<p>Currently we bundle JSON file with provider pricing data with every release. There is no documented and easy way for user to update this file or for us to ship an updated version without releasing a new version of Libcloud.</p>
+
+<p>We should provide easy way to update this file which includes the following:</p>
+
+<ul>
+<li>Command line tool for updating the file - user can specify a custom URL to the file. By default it should point to the latest version from the version control (<a href='https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co'>https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co</a>)</li>
+
+<li>Modify the code so it also tries to find the default pricing data file in <code>/home/user/.libcloud_data/pricing.json</code> (or whatever) directory</li>
+
+<li>Document this process and add it to the documentation page</li>
+</ul>
+
+<p><em>Note: Most of code for this functionality already exists (<a href='https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py'>https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py</a>). We just need to add a code for downloading a file from a remote server and the cli tool.</em></p>
+
+<h3 id='exception_reporting_for_partial_failures_in_the_methods_which_result_in_multiple_api_calls__http_requests'>Exception reporting for partial failures in the methods which result in multiple API calls / HTTP requests</h3>
+
+<p>Currently we have no standard interface for exceptions which get raised during a partial failure in a method which has side affects. Partial failure means that a function which performs multiple API calls failed half way through and this potentially resulted in some (but not all) resources getting created.</p>
+
+<p>We should provide a special exception for cases like this. This exception should contain information about resources which got created. Users can then use this information to perform &#8220;rollback&#8221; / cleanup partially created resources.</p>
+
+<h3 id='support_for_async_api_in_the_core'>Support for async API in the core</h3>
+
+<p>Currently we only expose sync / blocking API. This mostly works OK for simple command line scripts, but it&#8217;s less than ideal for long running process or applications which performs a lot of API calls which could be made more efficient and faster if we supported an async api.</p>
+
+<p>As part of this change we would eventually need to refactor every driver which would also provide other side benefits such as:</p>
+
+<ul>
+<li>Code which is more maintainable and easier to test (smaller functions)</li>
+
+<li>Easier way to handle partial failures / exceptions</li>
+</ul>
+
+<p>We didn&#8217;t come to a consensus on everything, but we agreed on a couple of things:</p>
+
+<ul>
+<li>Change should be backward compatible, we should default to the sync API and existing behavior code / shouldn&#8217;t change</li>
+
+<li>New async API should be available separately (e.g. under <code>libcloud.async.*</code> or whatever it ends up being)</li>
+
+<li>We should refactor internal code to follow new interfaces defined in the PEP 3156 (<a href='http://www.python.org/dev/peps/pep-3156/'>http://www.python.org/dev/peps/pep-3156/</a>)</li>
+
+<li>We should start with a small scale experiment and try this in a single method in a compute driver</li>
+</ul>
+
+<h3 id='documentation'>Documentation</h3>
+
+<p>We are weak on the documentation side.</p>
+
+<p>Going forward we should strictly enforce that every patch which adds new code / functionality contains documentation and appropriate docstrings.</p>
+
+<h3 id='migrating_to_git'>Migrating to git</h3>
+
+<p>We want to make contributing as easy as possible. SVN doesn&#8217;t help with that and increases barrier to entry.</p>
+
+<p>Action item here is me opening an Apache Infrastructure ticket for switching to git.</p>
+
+<h3 id='dropping_support_for_python_25'>Dropping support for Python 2.5</h3>
+
+<p>Supporting Python 2.5 adds code complexity which we would like to avoid. Main problem is that a bunch of CLI tools based on Libcloud usually also run on older versions of Linux distributions (e.g. RHEL 5) which still ship with Python 2.5.</p>
+
+<p>We didn&#8217;t managed to actually talk about this one, but we should explore an option of removing support for Python 2.5 in the future release.</p>
+
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>Overall the event was fun and productive. We had a lot of good debates and hopefully a lot of the things we talked about will result in real code and improvements in the near future :-)</p>
+
+<p>Thanks again to everyone who joined us. If you missed the event or you couldn&#8217;t attend, don&#8217;t worry! You are more than welcome (and encouraged) to join us and share your opinion and feedback on the <a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'>mailing list</a>.</p>
+</div>
+<div class="postfooter">
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style" style="float: right;">
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_button_linkedin_counter"></a>
+    </div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+    <!-- AddThis Button END -->
+    <div class="posttags">Tags: <a href="/tags/libcloud.html">libcloud</a>, <a href="/tags/open%20source.html">open source</a></div>
+</div>
+
+            </div>
+        </div>
+        <div id="footer">Powered by <a href="https://github.com/mojombo/jekyll" target="_blank" title="Yeah, if you are a Pythonista don't get too excited, it's Ruby">jekyll</a>, design forked from <a href="http://github.com/mrtazz/blog" target="_blank">Daniel Schauenberg</a></div>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/jquery.tipsy.js"></script>
+        <script type="text/javascript" src="/javascript/jquery.fancybox.pack.js?v=2.1.4"></script>
+        <script type='text/javascript'>
+          $(window).load(function()
+          {
+            $('img.tipsy').tipsy({title: 'alt' });
+            $('a.tipsy').tipsy({title: 'title', gravity: 's'});
+            $('.fancybox').fancybox({
+                helpers: {
+                    title : {
+                        type : 'float'
+                    }
+                }
+            });
+          });
+        </script>
+        <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1107810-12");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+    </body>
+</html>

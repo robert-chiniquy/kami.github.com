@@ -89,6 +89,12 @@
         <lastmod>2013-06-09T00:00:00-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.tomaz.me/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html
+        </loc>
+        <lastmod>2013-06-12T00:00:00-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.tomaz.me/archive.html</loc>
         <lastmod>2013-06-10T13:42:53-07:00</lastmod>
     </url>
@@ -102,7 +108,7 @@
     </url>
     <url>
         <loc>http://www.tomaz.me/</loc>
-        <lastmod>2013-06-10T13:42:53-07:00</lastmod>
+        <lastmod>2013-06-12T10:59:43-07:00</lastmod>
     </url>
     <url>
         <loc>http://www.tomaz.me/404.html</loc>

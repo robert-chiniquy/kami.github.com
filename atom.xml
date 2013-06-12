@@ -5,12 +5,118 @@
 	<link href="http://www.tomaz.me" rel="self" />
 	<link href="http://www.tomaz.me" />
 	<id>http://www.tomaz.me</id>
-	<updated>2013-06-10T14:09:14-07:00</updated>
+	<updated>2013-06-12T11:39:17-07:00</updated>
 	<author>
 		<name>Tomaz Muraus</name>
 		<email>tomaz@tomaz.me</email>
 	</author>
 
+    
+	<entry>
+		<title>Libcloud Design Day Recap (improving Libcloud and plans for the future)</title>
+        <link href="http://www.tomaz.me/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html" />
+        <id>http://www.tomaz.me/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html</id>
+		<updated>2013-06-12T00:00:00-07:00</updated>
+		<content type="html">&lt;h2 id='libcloud_design_day_recap_improving_libcloud_and_plans_for_the_future'&gt;&lt;a href='/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html'&gt;Libcloud Design Day Recap (improving Libcloud and plans for the future)&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Yesterday we hosted &lt;a href='https://lcdesignday.eventbrite.com'&gt;Libcloud Design Day and Meetup&lt;/a&gt; at the &lt;a href='http://rackertalent.com/sanfrancisco/'&gt;Rackspace San Francisco office&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This blog post includes a short recap of main topics we covered. It&amp;#8217;s assembled mostly from my &lt;a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'&gt;Libcloud mailing list post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The goal of the event was to sit down with the &lt;a href='https://libcloud.apache.org/'&gt;Libcloud&lt;/a&gt; users and developers, indicate current biggest pain points and weaknesses and brainstorm about possible solutions.&lt;/p&gt;
+
+&lt;p&gt;Event was relatively small, but we had a good sample set of Libcloud developers and user.&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day.jpg' title='Photo taken at the event'&gt;&lt;img class='inline' src='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day_thumb.jpg' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Photo taken at the event&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;Here is an incomplete list of people who have attended the event:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='http://journal.paul.querna.org/'&gt;Paul Querna&lt;/a&gt; (of Apache fame, also Libcloud committer)&lt;/li&gt;
+
+&lt;li&gt;&lt;a href='https://github.com/jedsmith/'&gt;Jed Smith&lt;/a&gt; (Libcloud committer)&lt;/li&gt;
+
+&lt;li&gt;&lt;a href='http://alexgaynor.net/'&gt;Alex Gaynor&lt;/a&gt; (PyPy, Django, Topaz, etc. contributor)&lt;/li&gt;
+
+&lt;li&gt;&lt;a href='http://glyph.twistedmatrix.com/'&gt;Glyph Lefkowitz&lt;/a&gt; (&lt;a href='https://twistedmatrix.com/trac/'&gt;Twisted&lt;/a&gt; creator)&lt;/li&gt;
+
+&lt;li&gt;&lt;a href='http://dreid.org/'&gt;David Reid&lt;/a&gt; (Twisted contributor)&lt;/li&gt;
+
+&lt;li&gt;Chris from &lt;a href='https://mist.io/'&gt;mist.io&lt;/a&gt; (mist.io uses Libcloud with many different providers)&lt;/li&gt;
+
+&lt;li&gt;Rick from Google working on the &lt;a href='https://cloud.google.com/products/compute-engine'&gt;Google Compute Engine&lt;/a&gt; driver&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You might recognize some of the names above - we were very happy to have some very well known and knowledgeable people from the Python world to join us.&lt;/p&gt;
+
+&lt;h3 id='pricing_data_distribution'&gt;Pricing data distribution&lt;/h3&gt;
+
+&lt;p&gt;Currently we bundle JSON file with provider pricing data with every release. There is no documented and easy way for user to update this file or for us to ship an updated version without releasing a new version of Libcloud.&lt;/p&gt;
+
+&lt;p&gt;We should provide easy way to update this file which includes the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Command line tool for updating the file - user can specify a custom URL to the file. By default it should point to the latest version from the version control (&lt;a href='https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co'&gt;https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Modify the code so it also tries to find the default pricing data file in &lt;code&gt;/home/user/.libcloud_data/pricing.json&lt;/code&gt; (or whatever) directory&lt;/li&gt;
+
+&lt;li&gt;Document this process and add it to the documentation page&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Note: Most of code for this functionality already exists (&lt;a href='https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py'&gt;https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py&lt;/a&gt;). We just need to add a code for downloading a file from a remote server and the cli tool.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id='exception_reporting_for_partial_failures_in_the_methods_which_result_in_multiple_api_calls__http_requests'&gt;Exception reporting for partial failures in the methods which result in multiple API calls / HTTP requests&lt;/h3&gt;
+
+&lt;p&gt;Currently we have no standard interface for exceptions which get raised during a partial failure in a method which has side affects. Partial failure means that a function which performs multiple API calls failed half way through and this potentially resulted in some (but not all) resources getting created.&lt;/p&gt;
+
+&lt;p&gt;We should provide a special exception for cases like this. This exception should contain information about resources which got created. Users can then use this information to perform &amp;#8220;rollback&amp;#8221; / cleanup partially created resources.&lt;/p&gt;
+
+&lt;h3 id='support_for_async_api_in_the_core'&gt;Support for async API in the core&lt;/h3&gt;
+
+&lt;p&gt;Currently we only expose sync / blocking API. This mostly works OK for simple command line scripts, but it&amp;#8217;s less than ideal for long running process or applications which performs a lot of API calls which could be made more efficient and faster if we supported an async api.&lt;/p&gt;
+
+&lt;p&gt;As part of this change we would eventually need to refactor every driver which would also provide other side benefits such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Code which is more maintainable and easier to test (smaller functions)&lt;/li&gt;
+
+&lt;li&gt;Easier way to handle partial failures / exceptions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We didn&amp;#8217;t come to a consensus on everything, but we agreed on a couple of things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change should be backward compatible, we should default to the sync API and existing behavior code / shouldn&amp;#8217;t change&lt;/li&gt;
+
+&lt;li&gt;New async API should be available separately (e.g. under &lt;code&gt;libcloud.async.*&lt;/code&gt; or whatever it ends up being)&lt;/li&gt;
+
+&lt;li&gt;We should refactor internal code to follow new interfaces defined in the PEP 3156 (&lt;a href='http://www.python.org/dev/peps/pep-3156/'&gt;http://www.python.org/dev/peps/pep-3156/&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;We should start with a small scale experiment and try this in a single method in a compute driver&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id='documentation'&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;We are weak on the documentation side.&lt;/p&gt;
+
+&lt;p&gt;Going forward we should strictly enforce that every patch which adds new code / functionality contains documentation and appropriate docstrings.&lt;/p&gt;
+
+&lt;h3 id='migrating_to_git'&gt;Migrating to git&lt;/h3&gt;
+
+&lt;p&gt;We want to make contributing as easy as possible. SVN doesn&amp;#8217;t help with that and increases barrier to entry.&lt;/p&gt;
+
+&lt;p&gt;Action item here is me opening an Apache Infrastructure ticket for switching to git.&lt;/p&gt;
+
+&lt;h3 id='dropping_support_for_python_25'&gt;Dropping support for Python 2.5&lt;/h3&gt;
+
+&lt;p&gt;Supporting Python 2.5 adds code complexity which we would like to avoid. Main problem is that a bunch of CLI tools based on Libcloud usually also run on older versions of Linux distributions (e.g. RHEL 5) which still ship with Python 2.5.&lt;/p&gt;
+
+&lt;p&gt;We didn&amp;#8217;t managed to actually talk about this one, but we should explore an option of removing support for Python 2.5 in the future release.&lt;/p&gt;
+
+&lt;h3 id='conclusion'&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Overall the event was fun and productive. We had a lot of good debates and hopefully a lot of the things we talked about will result in real code and improvements in the near future :-)&lt;/p&gt;
+
+&lt;p&gt;Thanks again to everyone who joined us. If you missed the event or you couldn&amp;#8217;t attend, don&amp;#8217;t worry! You are more than welcome (and encouraged) to join us and share your opinion and feedback on the &lt;a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'&gt;mailing list&lt;/a&gt;.&lt;/p&gt;</content>
+	</entry>
     
 	<entry>
 		<title>Time for new challenges</title>
@@ -555,56 +661,6 @@ Book&lt;/span&gt;&lt;/div&gt;
 &lt;p&gt;Beside giving a talk we will also host a development sprint there. This is a great opportunity for anyone who wants to contribute to the project or learn something new to join us. I will post more details about the sprint in the upcoming weeks on the &lt;a href='http://libcloud.apache.org/devinfo.html'&gt;libcloud mailing list&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;So that is it for May. See you next month when I will hopefully be able to report about multiple new storage and compute drivers and other improvements.&lt;/p&gt;</content>
-	</entry>
-    
-	<entry>
-		<title>libcloud Monthly Update (April 2011) - Storage API, load-balancer API, new drivers</title>
-        <link href="http://www.tomaz.me/2011/04/26/libcloud-monthly-update-april-2011-storage-api-load-balancer-api-new-drivers.html" />
-        <id>http://www.tomaz.me/2011/04/26/libcloud-monthly-update-april-2011-storage-api-load-balancer-api-new-drivers.html</id>
-		<updated>2011-04-26T00:00:00-07:00</updated>
-		<content type="html">&lt;h2 id='libcloud_monthly_update_april_2011__storage_api_loadbalancer_api_new_drivers'&gt;&lt;a href='/2011/04/26/libcloud-monthly-update-april-2011-storage-api-load-balancer-api-new-drivers.html'&gt;libcloud Monthly Update (April 2011) - Storage API, load-balancer API, new drivers&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Another month is around and it is time for another libcloud monthly update post. I did not write one previous month, because I have written &amp;#8221;&lt;a href='/2011/03/18/pycon-us-2011-recap.html'&gt;PyCon US 2011 Recap&lt;/a&gt;&amp;#8221; post which also includes information about libcloud development which has happened during PyCon and in March.&lt;/p&gt;
-&lt;div style='text-align: center;'&gt;&lt;a href='http://incubator.apache.org/libcloud/' target='_blank'&gt;&lt;img align='middle' src='/images/libcloud_logo.png' style='border: none !important;' /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;
-&lt;h3 id='what_has_been_accomplished_in_april_2011'&gt;What has been accomplished in April 2011&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;libcloud website has been ported to the Apache CMS. Now adding new and editing existing content should be a lot easier.&lt;/li&gt;
-
-&lt;li&gt;Extension method for modifying the instance attributes and changing the instance size has been added to the Amazon compute driver - &lt;a href='https://github.com/apache/libcloud/commit/dc9ccd87a44399ec9fa4c1982c0fc91859a305f1'&gt;r1084180&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;Gandi.net compute driver has been contributed by Aymeric Barantal - &lt;a href='https://issues.apache.org/jira/browse/LIBCLOUD-76'&gt;LIBCLOUD-76&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;CloudFiles storage driver and the base storage class have undergone a lot of improvements&lt;/li&gt;
-
-&lt;li&gt;CloudFiles storage driver &lt;a href='http://ci.apache.org/projects/libcloud/coverage/libcloud_storage_drivers_cloudfiles.html'&gt;code coverage&lt;/a&gt; has been increased for ~20% (from ~70% to ~89)&lt;/li&gt;
-
-&lt;li&gt;A new Amazon S3 storage driver has been committed intro trunk - &lt;a href='https://github.com/apache/libcloud/blob/trunk/libcloud/storage/drivers/s3.py'&gt;s3.py&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;OpSource compute driver has been contributed by Joe Miller - &lt;a href='https://issues.apache.org/jira/browse/LIBCLOUD-77'&gt;LIBCLOUD-77&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;Work has started on the load-balancer API and a reference drivers for GoGrid and Rackspace have already been committed into trunk. &lt;a href='https://github.com/apache/libcloud/commit/cf8b90c3a9eb0cc5659ce71b40883e6e67581aad'&gt;r1095180&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;a href='http://incubator.apache.org/libcloud/community-resources.html'&gt;Community resources&lt;/a&gt; section has been added to the website. This section contains links to different articles, tutorials and presentations produced by the libcloud developers and users.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id='what_is_currently_going_on'&gt;What is currently going on&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Jeremy Whitlock is working on the &lt;a href='http://libvirt.org/'&gt;libvirt&lt;/a&gt; driver. If you have any feedback or suggestions for this driver, please share it with others on the &lt;a href='http://mail-archives.apache.org/mod_mbox/incubator-libcloud/201104.mbox/%3CFA4867B9-0BFF-4F7C-84D9-CF342632446A@gmail.com%3E'&gt;mailing list&lt;/a&gt;.&lt;/li&gt;
-
-&lt;li&gt;Work continues on the storage and the load-balancer API. Only some minor changes are still needed for the storage API to be considered stable enough so libcloud 0.5.0 can be released.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id='misc'&gt;Misc&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Roman (the main author of the libcloud load-balancer API) has written a blog post which describes some differences and caveats which you can encounter while working with the Rackspace and GoGrid load-balancer API so be sure to check it out - &lt;a href='http://empt1e.blogspot.com/2011/04/comparison-of-gogrid-and-rackspace-load.html'&gt;Overview of GoGrid and Rackspace Load Balancing Services&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As you can see, April was pretty busy and a lot of new stuff has been committed into trunk.&lt;/p&gt;
-
-&lt;p&gt;Storage API will hopefully be finished soon and one of the highlights of the next month update post will be a long-awaited libcloud 0.5.0 release :)&lt;/p&gt;</content>
 	</entry>
     
 </feed>

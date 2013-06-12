@@ -50,6 +50,112 @@
             <div id="content">
                 
 <div class="post">
+    <h2 id='libcloud_design_day_recap_improving_libcloud_and_plans_for_the_future'><a href='/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html'>Libcloud Design Day Recap (improving Libcloud and plans for the future)</a></h2>
+
+<p>Yesterday we hosted <a href='https://lcdesignday.eventbrite.com'>Libcloud Design Day and Meetup</a> at the <a href='http://rackertalent.com/sanfrancisco/'>Rackspace San Francisco office</a>.</p>
+
+<p>This blog post includes a short recap of main topics we covered. It&#8217;s assembled mostly from my <a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'>Libcloud mailing list post</a>.</p>
+
+<p>The goal of the event was to sit down with the <a href='https://libcloud.apache.org/'>Libcloud</a> users and developers, indicate current biggest pain points and weaknesses and brainstorm about possible solutions.</p>
+
+<p>Event was relatively small, but we had a good sample set of Libcloud developers and user.</p>
+<div class='imginline'><a class='fancybox' href='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day.jpg' title='Photo taken at the event'><img class='inline' src='/images/2013-06-12-libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future/lc_design_day_thumb.jpg' /></a><span class='image-caption'>Photo taken at the event</span></div>
+<p>Here is an incomplete list of people who have attended the event:</p>
+
+<ul>
+<li><a href='http://journal.paul.querna.org/'>Paul Querna</a> (of Apache fame, also Libcloud committer)</li>
+
+<li><a href='https://github.com/jedsmith/'>Jed Smith</a> (Libcloud committer)</li>
+
+<li><a href='http://alexgaynor.net/'>Alex Gaynor</a> (PyPy, Django, Topaz, etc. contributor)</li>
+
+<li><a href='http://glyph.twistedmatrix.com/'>Glyph Lefkowitz</a> (<a href='https://twistedmatrix.com/trac/'>Twisted</a> creator)</li>
+
+<li><a href='http://dreid.org/'>David Reid</a> (Twisted contributor)</li>
+
+<li>Chris from <a href='https://mist.io/'>mist.io</a> (mist.io uses Libcloud with many different providers)</li>
+
+<li>Rick from Google working on the <a href='https://cloud.google.com/products/compute-engine'>Google Compute Engine</a> driver</li>
+</ul>
+
+<p>You might recognize some of the names above - we were very happy to have some very well known and knowledgeable people from the Python world to join us.</p>
+
+<h3 id='pricing_data_distribution'>Pricing data distribution</h3>
+
+<p>Currently we bundle JSON file with provider pricing data with every release. There is no documented and easy way for user to update this file or for us to ship an updated version without releasing a new version of Libcloud.</p>
+
+<p>We should provide easy way to update this file which includes the following:</p>
+
+<ul>
+<li>Command line tool for updating the file - user can specify a custom URL to the file. By default it should point to the latest version from the version control (<a href='https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co'>https://svn.apache.org/viewvc/libcloud/trunk/libcloud/data/pricing.json?view=co</a>)</li>
+
+<li>Modify the code so it also tries to find the default pricing data file in <code>/home/user/.libcloud_data/pricing.json</code> (or whatever) directory</li>
+
+<li>Document this process and add it to the documentation page</li>
+</ul>
+
+<p><em>Note: Most of code for this functionality already exists (<a href='https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py'>https://github.com/apache/libcloud/blob/trunk/libcloud/pricing.py</a>). We just need to add a code for downloading a file from a remote server and the cli tool.</em></p>
+
+<h3 id='exception_reporting_for_partial_failures_in_the_methods_which_result_in_multiple_api_calls__http_requests'>Exception reporting for partial failures in the methods which result in multiple API calls / HTTP requests</h3>
+
+<p>Currently we have no standard interface for exceptions which get raised during a partial failure in a method which has side affects. Partial failure means that a function which performs multiple API calls failed half way through and this potentially resulted in some (but not all) resources getting created.</p>
+
+<p>We should provide a special exception for cases like this. This exception should contain information about resources which got created. Users can then use this information to perform &#8220;rollback&#8221; / cleanup partially created resources.</p>
+
+<h3 id='support_for_async_api_in_the_core'>Support for async API in the core</h3>
+
+<p>Currently we only expose sync / blocking API. This mostly works OK for simple command line scripts, but it&#8217;s less than ideal for long running process or applications which performs a lot of API calls which could be made more efficient and faster if we supported an async api.</p>
+
+<p>As part of this change we would eventually need to refactor every driver which would also provide other side benefits such as:</p>
+
+<ul>
+<li>Code which is more maintainable and easier to test (smaller functions)</li>
+
+<li>Easier way to handle partial failures / exceptions</li>
+</ul>
+
+<p>We didn&#8217;t come to a consensus on everything, but we agreed on a couple of things:</p>
+
+<ul>
+<li>Change should be backward compatible, we should default to the sync API and existing behavior code / shouldn&#8217;t change</li>
+
+<li>New async API should be available separately (e.g. under <code>libcloud.async.*</code> or whatever it ends up being)</li>
+
+<li>We should refactor internal code to follow new interfaces defined in the PEP 3156 (<a href='http://www.python.org/dev/peps/pep-3156/'>http://www.python.org/dev/peps/pep-3156/</a>)</li>
+
+<li>We should start with a small scale experiment and try this in a single method in a compute driver</li>
+</ul>
+
+<h3 id='documentation'>Documentation</h3>
+
+<p>We are weak on the documentation side.</p>
+
+<p>Going forward we should strictly enforce that every patch which adds new code / functionality contains documentation and appropriate docstrings.</p>
+
+<h3 id='migrating_to_git'>Migrating to git</h3>
+
+<p>We want to make contributing as easy as possible. SVN doesn&#8217;t help with that and increases barrier to entry.</p>
+
+<p>Action item here is me opening an Apache Infrastructure ticket for switching to git.</p>
+
+<h3 id='dropping_support_for_python_25'>Dropping support for Python 2.5</h3>
+
+<p>Supporting Python 2.5 adds code complexity which we would like to avoid. Main problem is that a bunch of CLI tools based on Libcloud usually also run on older versions of Linux distributions (e.g. RHEL 5) which still ship with Python 2.5.</p>
+
+<p>We didn&#8217;t managed to actually talk about this one, but we should explore an option of removing support for Python 2.5 in the future release.</p>
+
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>Overall the event was fun and productive. We had a lot of good debates and hopefully a lot of the things we talked about will result in real code and improvements in the near future :-)</p>
+
+<p>Thanks again to everyone who joined us. If you missed the event or you couldn&#8217;t attend, don&#8217;t worry! You are more than welcome (and encouraged) to join us and share your opinion and feedback on the <a href='https://mail-archives.apache.org/mod_mbox/libcloud-dev/201306.mbox/%3CCAJMHEmLtN9Fskqj5GTc8_Kfro08xjADvtYBSeT7i%3D-iesg%3Durg%40mail.gmail.com%3E'>mailing list</a>.</p>
+    <div class="postfooter">
+        <div class="posttags">Tags: <a href="/tags/libcloud.html">libcloud</a>, <a href="/tags/open%20source.html">open source</a></div>
+        <div class="postdate">&raquo; <a href="/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html">Jun 12, 2013</a></div>
+    </div>
+</div>
+
+<div class="post">
     <h2 id='time_for_new_challenges'><a href='/2013/06/09/time-for-new-challenges.html'>Time for new challenges</a></h2>
 
 <p>For as long as I can remember I have been interested in startups and growing a sustainable business. I have finally decided to take the next step. I&#8217;m leaving Rackspace and moving back to Slovenia to start working on my own startup.</p>
@@ -276,131 +382,6 @@ Book</span></div>
     <div class="postfooter">
         <div class="posttags">Tags: <a href="/tags/libcloud.html">libcloud</a>, <a href="/tags/open%20source.html">open source</a>, <a href="/tags/programming.html">programming</a></div>
         <div class="postdate">&raquo; <a href="/2011/12/07/libcloud-montly-update-december-2011.html">Dec 07, 2011</a></div>
-    </div>
-</div>
-
-<div class="post">
-    <h2 id='lessons_learned_while_porting_libcloud_to_python_3'><a href='/2011/12/03/lessons-learned-while-porting-libcloud-to-python-3.html'>Lessons learned while porting Libcloud to Python 3</a></h2>
-
-<p>Yesterday after seeing and being inspired by the <a href='http://news.ycombinator.com/item?id=3305021'>Django Python 3 port</a> news, I have decided it&#8217;s finally time to port <a href='http://libcloud.apache.org/'>Libcloud</a> to Python 3. There have already been some talks about doing that in the past, but nobody actually managed to make a lot of progress.</p>
-
-<p>In general, our goal is pretty similar to the Django one - have a single code base which works with Python 2.5, 2.6, 2.7 / PyPy and Python 3.</p>
-
-<p>Alternative approach to having a single code base is using a tool like <a href='http://docs.python.org/library/2to3.html'>2to3</a> to automatically convert 2.x version to the 3.x one or having multiple code bases / branches - one for 2.x and one for 3.x.</p>
-
-<p>Early on when we talked about porting to Python 3, we have decided that we will go with a &#8220;single code base&#8221; approach. This approach allows us to keep a fast development pace and it&#8217;s also more friendlier for our users.</p>
-
-<p>In this post I will describe some of the issues which I have encountered while porting the library and how I have solved them.</p>
-
-<h2 id='1_handling_renamed_libraries_and_moved_functionality'>1. Handling renamed libraries and moved functionality</h2>
-
-<h3 id='httplib'>httplib</h3>
-
-<p>In Python 3 <code>httplib</code> has been renamed to <code>http.client</code>. To solve this problem, I have used an aliased import - <code>import http.client as httplib</code>.</p>
-
-<h3 id='urllib__urllib2'>urllib &amp; urllib2</h3>
-
-<p>All of the functionality from <code>urllib2</code> has been merged to <code>urllib</code>. This problem can also be easily solved using an aliased import - <code>import urllib as urllib2</code>.</p>
-
-<h3 id='urlparse'>urlparse</h3>
-
-<p>Functionality from <code>urlparse</code> has been moved to <code>urllib.parse</code>. We only use two functions from this module (quote and urlencode) so simple aliased import did the trick:</p>
-<div class='highlight'><pre><code class='python'><span class='kn'>from</span> <span class='nn'>urllib.parse</span> <span class='kn'>import</span> <span class='n'>quote</span> <span class='k'>as</span> <span class='n'>urlquote</span>
-<span class='kn'>from</span> <span class='nn'>urllib.parse</span> <span class='kn'>import</span> <span class='n'>urlencode</span> <span class='k'>as</span> <span class='n'>urlencode</span>
-</code></pre></div>
-<h3 id='xmlrpclib'>xmlrpclib</h3>
-
-<p><code>xmlrpclib</code> has been moved to <code>xmlrpc.client</code>. Simple aliased import also solved this problem - <code>import xmlrpc.client as xmlrpclib</code>.</p>
-
-<h3 id='stringio'>StringIO</h3>
-
-<p><code>StringIO</code> has also been moved. <code>from io import StringIO</code> did the trick.</p>
-
-<h2 id='2__type_and_filelike_objects'>2. <code>file</code> type and file-like objects</h2>
-
-<p><code>file</code> type has been removed in Python 3. To resolve this problem, I have used code similar to the one bellow in the places where we use <code>file</code> type.</p>
-<div class='highlight'><pre><code class='python'><span class='k'>if</span> <span class='n'>PY3</span><span class='p'>:</span>
-    <span class='kn'>from</span> <span class='nn'>io</span> <span class='kn'>import</span> <span class='n'>FileIO</span> <span class='k'>as</span> <span class='nb'>file</span>
-
-<span class='k'>class</span> <span class='nc'>MyFileLikeObject</span><span class='p'>(</span><span class='nb'>file</span><span class='p'>):</span>
-    <span class='o'>...</span>
-</code></pre></div>
-<h2 id='3_generators_and__method'>3. Generators and <code>.next()</code> method.</h2>
-
-<p>For consistency with other magic methods, <code>next</code> method in Python 3 has been renamed to <code>__next__</code>. To make it work with all the versions, I have used built-in <code>next</code> function in Python &gt;= 3 and object <code>.next()</code> method in older versions.</p>
-<div class='highlight'><pre><code class='python'><span class='k'>if</span> <span class='n'>sys</span><span class='o'>.</span><span class='n'>version_info</span> <span class='o'>&gt;=</span> <span class='p'>(</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>):</span>
-    <span class='nb'>next</span> <span class='o'>=</span> <span class='n'>__builtins__</span><span class='p'>[</span><span class='s'>&#39;next&#39;</span><span class='p'>]</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='k'>def</span> <span class='nf'>next</span><span class='p'>(</span><span class='n'>i</span><span class='p'>):</span>
-        <span class='k'>return</span> <span class='n'>i</span><span class='o'>.</span><span class='n'>next</span><span class='p'>()</span>
-</code></pre></div>
-<h2 id='4_exception_handling'>4. Exception handling</h2>
-
-<p>Sadly, there is no unified way to handle exceptions and extract the exception object in Python 2.5 and Python 3.x. This means I needed to use a hacky <code>sys.exc_info()[1]</code> approach to extract the raised exception</p>
-
-<p>Old code:</p>
-<div class='highlight'><pre><code class='python'><span class='k'>try</span><span class='p'>:</span>
-    <span class='n'>foo</span>
-<span class='k'>except</span> <span class='ne'>Exception</span><span class='p'>,</span> <span class='n'>e</span><span class='p'>:</span>
-    <span class='k'>print</span> <span class='n'>e</span>
-</code></pre></div>
-<p>New code:</p>
-<div class='highlight'><pre><code class='python'><span class='k'>try</span><span class='p'>:</span>
-    <span class='n'>foo</span>
-<span class='k'>except</span> <span class='ne'>Exception</span><span class='p'>:</span>
-    <span class='n'>e</span> <span class='o'>=</span> <span class='n'>sys</span><span class='o'>.</span><span class='n'>exc_info</span><span class='p'>()[</span><span class='mi'>1</span><span class='p'>]</span>
-    <span class='k'>print</span> <span class='n'>e</span>
-</code></pre></div>
-<p>One of the PyPy developers has <a href='http://www.reddit.com/r/Python/comments/mxufx/django_python_3_port_all_tests_now_pass_on_272/'>posted on reddit</a> that this approach is very slow in PyPy. Luckily, besides the tests, there aren&#8217;t many places in our code where we need access to the exception object so this should be a good compromise for now.</p>
-
-<h2 id='5_filter_map_dictkeys'>5. filter, map, dict.keys()</h2>
-
-<p>In Python 2 those functions return a <code>list</code>, but in Python 3 they return a special object. Compatibility can be preserved by casting a result from this function to a list - e.g. <code>list(filter(lamba x: x.name == &#39;test&#39;, nodes))</code>.</p>
-
-<h2 id='6_iteritems_xrange'>6. iteritems, xrange</h2>
-
-<p>In Python 3, <code>iteritems</code> method has been removed and functionality from <code>xrange</code> has been merged into <code>range</code>. I have simplify replaced <code>iteritems</code> with <code>items</code> and <code>xrange</code> with <code>range</code>. We never used <code>xrange</code> with a lot of values so storing a whole list in memory in Python 2.x shouldn&#8217;t be a huge deal.</p>
-
-<h2 id='7__and_encoding'>7. <code>xml.etree.ElementTree.tostring</code> and encoding</h2>
-
-<p>In Python 3 this method returns <a href='http://hg.python.org/cpython/rev/57e631f088d7/'>bytes by default</a>. To preserve the old behavior and get a string back, I have used a code similar to one bellow:</p>
-<div class='highlight'><pre><code class='python'><span class='k'>if</span> <span class='n'>PY3</span><span class='p'>:</span>
-    <span class='n'>encoding</span> <span class='o'>=</span> <span class='s'>&#39;unicode&#39;</span>
-<span class='k'>else</span><span class='p'>:</span>
-    <span class='n'>encoding</span> <span class='o'>=</span> <span class='bp'>None</span>
-
-<span class='n'>data</span> <span class='o'>=</span> <span class='n'>tostring</span><span class='p'>(</span><span class='n'>root</span><span class='p'>,</span> <span class='n'>encoding</span><span class='o'>=</span><span class='n'>encoding</span><span class='p'>)</span>
-</code></pre></div>
-<h2 id='8_encodehex'>8. encode(&#8216;hex&#8217;)</h2>
-
-<p>We had multiple places in the code where we did something like this:</p>
-<div class='highlight'><pre><code class='python'><span class='n'>value</span> <span class='o'>=</span> <span class='n'>os</span><span class='o'>.</span><span class='n'>urandom</span><span class='p'>(</span><span class='mi'>8</span><span class='p'>)</span><span class='o'>.</span><span class='n'>encode</span><span class='p'>(</span><span class='s'>&#39;hex&#39;</span><span class='p'>)</span>
-</code></pre></div>
-<p>Hex encoding has been removed from Python 3. I have preserved backward compatibility by using <code>binascii</code> module:</p>
-<div class='highlight'><pre><code class='python'><span class='n'>value</span> <span class='o'>=</span> <span class='n'>binascii</span><span class='o'>.</span><span class='n'>hexlify</span><span class='p'>(</span><span class='n'>os</span><span class='o'>.</span><span class='n'>urandom</span><span class='p'>(</span><span class='mi'>8</span><span class='p'>))</span>
-</code></pre></div>
-<h2 id='9_octal_numbers'>9. Octal numbers</h2>
-
-<p>In Python 3 there is a special backward-incompatible (and strange) syntax for octal numbers - e.g. <code>0o755</code>. We only use octal number in one place and this has been easily resolved by using <code>int</code> to convert a string to a number with base 8 - <code>int(&#39;755&#39;, 8)</code>.</p>
-
-<p>Those are just some of the issues I have encountered during porting. If you want to view all of the issues and how I have resolved them, you can see a full diff <a href='https://github.com/apache/libcloud/compare/c995ea6b8b37d4bbec741a7d2d70b08da1c62f55...py3k'>here</a>.</p>
-
-<p>Overall, I&#8217;m pretty satisfied with the outcome. I have managed to keep most of the Python 2 and Python 3 compatibility code in a single module (<code>libcloud.py3</code>) and it probably took me less then 5 hours to do the whole port including the research.</p>
-
-<p>Bellow you can also find some links which I have found helpful while porting the code:</p>
-
-<ul>
-<li><a href='http://docs.python.org/library/2to3.html'>http://docs.python.org/library/2to3.html</a></li>
-
-<li><a href='http://docs.python.org/release/3.0.1/whatsnew/3.0.html'>http://docs.python.org/release/3.0.1/whatsnew/3.0.html</a></li>
-
-<li><a href='http://python3porting.com/differences.html'>http://python3porting.com/differences.html</a></li>
-
-<li><a href='http://www.voidspace.org.uk/python/articles/porting-mock-to-python-3.shtml'>http://www.voidspace.org.uk/python/articles/porting-mock-to-python-3.shtml</a></li>
-</ul>
-    <div class="postfooter">
-        <div class="posttags">Tags: <a href="/tags/libcloud.html">libcloud</a>, <a href="/tags/open%20source.html">open source</a>, <a href="/tags/programming.html">programming</a>, <a href="/tags/python.html">python</a>, <a href="/tags/python%203.html">python 3</a></div>
-        <div class="postdate">&raquo; <a href="/2011/12/03/lessons-learned-while-porting-libcloud-to-python-3.html">Dec 03, 2011</a></div>
     </div>
 </div>
 
