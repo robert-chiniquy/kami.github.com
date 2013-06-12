@@ -16,7 +16,7 @@ This blog post includes a short recap of main topics we covered. It's
 assembled mostly from my [Libcloud mailing list post][12].
 
 The goal of the event was to sit down with the [Libcloud][17] users and
-developers, indicate current biggest pain points and weakness and
+developers, indicate current biggest pain points and weaknesses and
 brainstorm about possible solutions.
 
 Event was relatively small, but we had a good sample set of Libcloud developers
@@ -83,20 +83,20 @@ efficient and faster if we supported an async api.
 As part of this change we would eventually need to refactor every driver which
 would also provide other side benefits such as:
 
-* More maintainable code (smaller functions)
+* Code which is more maintainable and easier to test (smaller functions)
 * Easier way to handle partial failures / exceptions
 
 We didn't come to a consensus on everything, but we agreed on a couple of
 things:
 
-* Change should be backward compatible, we should default to sync API and
+* Change should be backward compatible, we should default to the sync API and
   existing behavior code / shouldn't change
-* New async API should be available separately (e.g. under libcloud.async.*
+* New async API should be available separately (e.g. under `libcloud.async.*`
   or whatever it ends up being)
 * We should refactor internal code to follow new interfaces defined in the
   PEP 3156 ([http://www.python.org/dev/peps/pep-3156/][14])
 * We should start with a small scale experiment and try this in a single
-  method in a single compute driver
+  method in a compute driver
 
 ### Documentation
 
@@ -107,7 +107,7 @@ Going forward we should strictly enforce that every patch which adds new code
 
 ### Migrating to git
 
-We want to make contributing as easy as possible and SVN doesn't help with that
+We want to make contributing as easy as possible. SVN doesn't help with that
 and increases barrier to entry.
 
 Action item here is me opening an Apache Infrastructure ticket for switching to
@@ -117,7 +117,8 @@ git.
 
 Supporting Python 2.5 adds code complexity which we would like to avoid. Main
 problem is that a bunch of CLI tools based on Libcloud usually also run on
-older versions of Linux (e.g. RHEL 5) which still ship with Python 2.5.
+older versions of Linux distributions (e.g. RHEL 5) which still ship with
+Python 2.5.
 
 We didn't managed to actually talk about this one, but we should explore an
 option of removing support for Python 2.5 in the future release.
@@ -128,9 +129,9 @@ Overall the event was fun and productive. We had a lot of good debates and
 hopefully a lot of the things we talked about will result in real code and
 improvements in the near future :-)
 
-If you missed the event or you couldn't attend, don't worry! You are more than
-welcome (and encouraged) to join us and share your opinion and feedback on the
-[mailing list][12].
+Thanks again to everyone who joined us. If you missed the event or you couldn't
+attend, don't worry! You are more than welcome (and encouraged) to join us and
+share your opinion and feedback on the [mailing list][12].
 
 [1]: {{ page.url }}
 [2]: https://lcdesignday.eventbrite.com
