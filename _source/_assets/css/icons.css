@@ -1,0 +1,32 @@
+.icon {
+  background-image: url('/images/icons/icons.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.icon-twitter {
+  background-position: 0 -330px;
+}
+
+.icon-gplus {
+  background-position: 0 -66px;
+}
+
+.icon-github {
+  background-position: 0 0;
+}
+
+.icon-launchpad {
+  background-position: 0 -132px;
+}
+
+.icon-linkedin {
+  background-position: 0 -198px;
+}
+
+.icon-masterbranch {
+  background-position: 0 -264px;
+}
