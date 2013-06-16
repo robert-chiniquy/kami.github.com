@@ -33,9 +33,11 @@ some kind of work visa and you want to move back to the home country there
 are basically no high level resources you could use to know what to expect.
 
 I recently went through this process myself so I have fresh and first hand
-experience. I hope this post will act as a high level overview, help other
-people in a similar situation and give a better idea of how the whole thing
-looks like to people who never went through a process like this personally.
+experience. Actual process involved a lot digging and reading through long
+and mostly boring legal documents.
+I hope this post will act as a high level overview, help other people in a
+similar situation and give a better idea of how the whole thing looks like
+to people who never went through a process like this personally.
 
 A lot of things described in this post are similar to the process you need to
 go through if you are just changing your job or moving to a different location,
@@ -106,8 +108,10 @@ In my case I left the country one day after my last working day.
 
 ### Resignation Letter
 
-In California you are employed at will which in the layman's terms means you can
-pretty much leave and company can fire you anytime they want.
+In California you are employed at will which in the layman's terms means that
+either you or your employer can terminate the employment relationship at any
+time, with or without reason (exceptions include discriminatory and a couple of
+other reasons).
 
 Common practice when quitting your job is to give around 2 week notice to your
 employer. In a special case like this you need to figure a lot of things out
