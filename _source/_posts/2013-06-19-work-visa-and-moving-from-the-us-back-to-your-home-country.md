@@ -75,6 +75,13 @@ entrepreneurs without US citizenship and makes it basically impossible to
 start your own company in the US if you don't have a lot of money to try
 your bets with the investor visa (E2) or similar.
 
+<div class="imginline"><a
+href="/images/work-visa-and-moving-from-the-us-back-to-your-home-country/startup_immigration.png"
+class="fancybox" title="Visualization of different type of visas and path to the green card. Source:
+http://fundersandfounders.com/coming-to-america-for-entrepreneurs-infographic/"><img
+src="/images/work-visa-and-moving-from-the-us-back-to-your-home-country/startup_immigration_thumb.png"
+class="inline"></a><span class="image-caption">Visualization of different type of visas and path to the green card.</span></div>
+
 That is very sad, especially because a lot of large and successful US companies
 were started by foreign-born entrepreneurs. The whole immigration problem is a
 very complex topic and I can't do it justice in a single paragraph. All I can
