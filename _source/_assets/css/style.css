@@ -65,7 +65,7 @@ ul.nobullet {
   list-style-type: none;
 }
 
-img
+img.border
 {
   border: 1px solid black;
 }
