@@ -5,7 +5,7 @@
 	<link href="http://www.tomaz.me" rel="self" />
 	<link href="http://www.tomaz.me" />
 	<id>http://www.tomaz.me</id>
-	<updated>2013-06-16T00:06:32-07:00</updated>
+	<updated>2013-06-16T19:04:51-07:00</updated>
 	<author>
 		<name>Tomaz Muraus</name>
 		<email>tomaz@tomaz.me</email>
@@ -478,7 +478,9 @@ Book&lt;/span&gt;&lt;/div&gt;
         <link href="http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html" />
         <id>http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html</id>
 		<updated>2011-11-27T00:00:00-08:00</updated>
-		<content type="html">&lt;p&gt;First a short-introduction for people who aren&amp;#8217;t familiar with Whiskey.&lt;/p&gt;
+		<content type="html">&lt;h2 id='whiskey_nodejs_test_runner_now_with_more_goodness__introducing_process_runner'&gt;&lt;a href='/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html'&gt;Whiskey Node.js test runner now with more goodness - introducing process runner&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;First a short-introduction for people who aren&amp;#8217;t familiar with Whiskey.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href='https://github.com/cloudkick/whiskey'&gt;Whiskey&lt;/a&gt; is a powerful test runner for Node.js applications. It supports async testing, code coverage, scope leaks reporting, Makefile generation, test timing and lot more. Be sure to check out the &lt;a href='https://github.com/cloudkick/whiskey'&gt;github page&lt;/a&gt; which lists all the features.&lt;/p&gt;
 
