@@ -20,7 +20,7 @@ most commonly used attributes through a simple command line interface.
 
 Another feature which was added recently and is available in Cassandra 1.2 is a
 feature called [request tracing][3]. Request tracing allows you see exactly
-what is happens during a query executing and exactly how long each step takes.
+what happens during a query executing and exactly how long each step takes.
 
 <div class="imginline"><a
 href="/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/request_tracing.png"
