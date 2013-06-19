@@ -13,7 +13,7 @@ tags:
 [Apache Cassandra][2] includes a lot of functionality and tools which provide
 good visibility into your cluster health and performance.
 
-A lot of this performance and health related is exposed over the
+A lot of this performance and health related metrics are exposed over the
 [JMX interface][4] and through the [nodetool][5] command line tool. nodetool is
 a simple wrapper around JMX interface which allows you to access some of the
 most commonly used attributes through a simple command line interface.
@@ -66,7 +66,7 @@ posts which explain how to interpret this output (e.g.
 nevertheless interpreting the raw command line output is still time consuming
 and cumbersome.
 
-### Visualizing cfhistograms output using a histogram
+### Visualizing cfhistograms output
 
 Around a year ago I was debugging a performance issues in one of our
 clusters so I decided to write simple Python script which visualizes the
@@ -123,7 +123,7 @@ writes 5 different histogram files to the output directory.
 I hope you find it useful and this script will allow you to more easily
 interpret the output of nodetool `cfhistograms` command.
 
-In the future I will try to write more about how we used the output of this
+In the future, I will try to write more about how we used the output of this
 command in practice to identify and issue and misconfiguration in one of our
 clusters.
 
