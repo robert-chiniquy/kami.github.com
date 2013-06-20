@@ -5,12 +5,158 @@
 	<link href="http://www.tomaz.me" rel="self" />
 	<link href="http://www.tomaz.me" />
 	<id>http://www.tomaz.me</id>
-	<updated>2013-06-19T08:18:25-07:00</updated>
+	<updated>2013-06-20T08:40:45-07:00</updated>
 	<author>
 		<name>Tomaz Muraus</name>
 		<email>tomaz@tomaz.me</email>
 	</author>
 
+    
+	<entry>
+		<title>Work visa and moving from the US back to your home country</title>
+        <link href="http://www.tomaz.me/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html" />
+        <id>http://www.tomaz.me/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html</id>
+		<updated>2013-06-20T00:00:00-07:00</updated>
+		<content type="html">&lt;h2 id='work_visa_and_moving_from_the_us_back_to_your_home_country'&gt;&lt;a href='/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html'&gt;Work visa and moving from the US back to your home country&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;In my &lt;a href='/2013/06/09/time-for-new-challenges.html'&gt;recent post&lt;/a&gt; I wrote that I&amp;#8217;m leaving my current job and moving back to Slovenia to start working on my own startup. In this post I&amp;#8217;m going to provide a high level overview of a process and most of the bureaucratic things which are involved if you have a some kind of work visa (H1B in my case) and you want to move back to your home country.&lt;/p&gt;
+
+&lt;h3 id='motivation'&gt;Motivation&lt;/h3&gt;
+
+&lt;p&gt;If you search around the web you can find plenty of blog posts, articles and resources for people who got a job or want to work in the US ( e.g. &lt;a href='http://blog.penso.info/2013/05/25/getting-a-job-in-san-francisco/'&gt;&amp;#8220;Getting a job in San Francisco&amp;#8221;&lt;/a&gt;).&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/golden_gate_bridge.jpg' title='Golden Gate Bridge, San Francisco, California'&gt;&lt;img class='inline' src='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/golden_gate_bridge_thumb.jpg' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Golden Gate Bridge, San Francisco, California&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;The same is not true if you turn the situation around. If you currently hold some kind of work visa and you want to move back to the home country there are basically no high level resources you could use to know what to expect.&lt;/p&gt;
+
+&lt;p&gt;I recently went through this process myself so I have fresh and first hand experience. Actual process involved a lot digging and reading through long and mostly boring legal documents. I hope this post will act as a high level overview, help other people in a similar situation and give a better idea of how the whole thing looks like to people who never went through a process like this personally.&lt;/p&gt;
+
+&lt;p&gt;A lot of things described in this post are similar to the process you need to go through if you are just changing your job or moving to a different location, but there are two major differences:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you have H1B, there is no grace period which means you are on a tight schedule and need to make sure all the dates align perfectly.&lt;/li&gt;
+
+&lt;li&gt;You are mostly on your own. If you get a job offer from a respectful company in the US, the company will usually pay the lawyers and take care most of the bureaucracy. The whole process is still very stressful and there are a lot of factors you nor lawyers can control, but at least you are not on your own.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id='disclaimer'&gt;Disclaimer&lt;/h3&gt;
+
+&lt;p&gt;First I want to add that I&amp;#8217;m going to talk about my specific case and people who hold H1B visa and the same things might not apply to other type of visas valid for work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Second of all, I&amp;#8217;m not a lawyer nor a tax advisor so please, if you are not sure about something, do your own research and consult your lawyer and / or tax advisor before doing something based just on this blog post.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id='why_move_outside_of_the_us_in_the_first_place'&gt;Why move outside of the US in the first place?&lt;/h3&gt;
+
+&lt;p&gt;First of all, a lot of people will ask why move outside of the US in the first place? Why not just start the company in the US? Isn&amp;#8217;t Silicon Valley one of the best places for a technical and social startup to be?&lt;/p&gt;
+
+&lt;p&gt;To start with the last questions - the answer is yes. For majority of the technical and social startups Silicon Valley indeed is the best place to be.&lt;/p&gt;
+
+&lt;p&gt;Sadly if you are foreign-born and don&amp;#8217;t have a US citizenship you are mostly out of luck. The reason is that US immigration doesn&amp;#8217;t welcome foreign-born entrepreneurs without US citizenship and makes it basically impossible to start your own company in the US if you don&amp;#8217;t have a lot of money to try your bets with the investor visa (E2) or similar.&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/startup_immigration.png' title='Visualization of different type of visas and path to the green card. Source:
+http://fundersandfounders.com/coming-to-america-for-entrepreneurs-infographic/'&gt;&lt;img class='inline' src='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/startup_immigration_thumb.png' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Visualization of different type of visas and path to the green card.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;That is very sad, especially because a lot of large and successful US companies were started by foreign-born entrepreneurs. The whole immigration problem is a very complex topic and I can&amp;#8217;t do it justice in a single paragraph. All I can say is that I&amp;#8217;m happy to see other countries recognizing this problem and trying to do something about it (examples include &lt;a href='http://startupchile.org/'&gt;StartupChile&lt;/a&gt; sponsored by the Chilean government and &lt;a href='http://www.cic.gc.ca/english/immigrate/business/start-up/index.asp?utm_source=slash-startup&amp;amp;utm_medium=short-url&amp;amp;utm_campaign=generic'&gt;Canada&amp;#8217;s Start-Up Visa program&lt;/a&gt;).&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/canada_startup_visa_billboard.jpg' title='Billboard on U.S. 101. Bold and clever way of advertising Canada&amp;apos;s new Start-Up Visa.
+Source: http://www.cic.gc.ca/english/department/media/photos/high-res/index.asp?p=105'&gt;&lt;img class='inline' src='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/canada_startup_visa_billboard_thumb.jpg' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Billboard on U.S. 101. Bold and clever way of advertising Canada's new Start-Up Visa.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;Luckily recently a bunch of well known Silicon Valley entrepreneurs have stepped together and started working on a new immigration reform. The whole reform is not ideal, but it&amp;#8217;s a step in the right direction and a big improvement over the current situation. I hope the bill will pass in the senate, but I&amp;#8217;m not too optimistic because similar efforts have failed in the past.&lt;/p&gt;
+
+&lt;h3 id='h1b_and_grace_period'&gt;H1B and grace period&lt;/h3&gt;
+
+&lt;p&gt;Contrary to a popular belief there is no grace period for H1B holders. You lose your H1B (and your status) as soon as you leave your job.&lt;/p&gt;
+
+&lt;p&gt;If you want to do everything correctly and / or come back in the future it should be in your best interest to leave the country as soon as possible after your last work day.&lt;/p&gt;
+
+&lt;p&gt;In my case I left the country one day after my last working day.&lt;/p&gt;
+
+&lt;h3 id='resignation_letter'&gt;Resignation Letter&lt;/h3&gt;
+
+&lt;p&gt;In California you are employed at will which in the layman&amp;#8217;s terms means that either you or your employer can terminate the employment relationship at any time, with or without reason (exceptions include discriminatory and a couple of other reasons).&lt;/p&gt;
+
+&lt;p&gt;Common practice when quitting your job is to give around 2 week notice to your employer. In a special case like this you need to figure a lot of things out (401k, apartment, ESPP, selling your belongings, etc.) which aren&amp;#8217;t under your control and involve talking to HR and other people and institutions.&lt;/p&gt;
+
+&lt;p&gt;This means you should take all of this into account before giving your notice and make sure you have plenty of time to figure all of this out.&lt;/p&gt;
+
+&lt;h3 id='sailing_permit_taxes_and_the_irs'&gt;Sailing permit, taxes and the IRS&lt;/h3&gt;
+
+&lt;p&gt;If you are on a work visa and you are going to leave a country for a longer period you need to obtain a document called &amp;#8221;&lt;a href='http://www.irs.gov/publications/p519/ch11.html'&gt;sailing permit&lt;/a&gt;&amp;#8221; from the IRS.&lt;/p&gt;
+
+&lt;p&gt;If you read about it online, people says that almost no one checks for a sailing permit when you leave the country. If you ever want to return to the US and do everything the right way you should obtain this document.&lt;/p&gt;
+
+&lt;p&gt;To purpose of this document is to prove IRS that you don&amp;#8217;t ow them any money and if you do, you need to pay it before you can get a permit and legally leave the country.&lt;/p&gt;
+
+&lt;p&gt;The way this process works is as follows. You go to the local IRS office and with you, you need to have the following documents (for a full list see the &lt;a href='http://www.irs.gov/Individuals/International-Taxpayers/Departing-Alien-Clearance-(Sailing-Permit)'&gt;IRS website&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Photo ID (passport / california id / driving license)&lt;/li&gt;
+
+&lt;li&gt;Your visa (usually located in your passport)&lt;/li&gt;
+
+&lt;li&gt;Plane ticket which shows your date of departure&lt;/li&gt;
+
+&lt;li&gt;Tax return for the previous year (to show that you paid any taxes due)&lt;/li&gt;
+
+&lt;li&gt;W2&amp;#8217;s for the previous years&lt;/li&gt;
+
+&lt;li&gt;Pay stubs for the current year (to show taxes were withheld from your paychecks)&lt;/li&gt;
+
+&lt;li&gt;Filled &lt;a href='http://www.irs.gov/pub/irs-pdf/f1040c.pdf'&gt;1040C&lt;/a&gt; form&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/tax_forms.jpg' title='Regular 1040 tax return form. You will need to fill this
+at the end of the current tax year. Source:
+https://secure.flickr.com/photos/teegardin'&gt;&lt;img class='inline' src='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/tax_forms_thumb.jpg' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Regular 1040 tax return form. You
+will need to fill this at the end of the current tax year.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;The last part is one of the most important ones. &lt;a href='http://www.irs.gov/pub/irs-pdf/f1040c.pdf'&gt;1040C&lt;/a&gt; is a one time early tax return for a foreign alien leaving the country. You basically prove that you don&amp;#8217;t owe any taxes. If you do you need to pay them before you leave. If the IRS owes you money they won&amp;#8217;t return this when you leave, but you need to claim that when you are filling your regular tax return for the current tax year.&lt;/p&gt;
+
+&lt;p&gt;If you only have a single source of income (your job), aren&amp;#8217;t self employed and don&amp;#8217;t have any vested shares, filling 1040C is pretty straightforward.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that things will get more complex when you are going to file your regular tax return for the current tax year (1040 or 1040NR). If you meet the &lt;a href='http://www.irs.gov/taxtopics/tc851.html'&gt;substantial presence test&lt;/a&gt;, you will also ow US taxes for any money you make outside the US in this tax year. Most of the details again depend on your specific situation so be sure to do your own research.&lt;/p&gt;
+
+&lt;p&gt;If there is no treaty between the US and your home country you will also need pay taxes to the US and your home country. Luckily that is not the case with Slovenia, because we have &lt;a href='http://www.irs.gov/pub/irs-trty/slovenia.pdf'&gt;signed a treaty for avoidance of double taxation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id='selling_your_belongings'&gt;Selling your belongings&lt;/h3&gt;
+
+&lt;p&gt;This title is pretty self explanatory and it&amp;#8217;s almost the same if you are just moving to a different location.&lt;/p&gt;
+
+&lt;p&gt;The only difference is that under this scenario you are usually under time pressure and all of the dates must line up perfectly.&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/garage_sale_1.jpg' title='Garage sale is one way to get rid of your belongings.
+Usually way more fun than selling to random creepy people on Craigslist. Source:
+https://secure.flickr.com/photos/jpfinley'&gt;&lt;img class='inline' src='/images/work-visa-and-moving-from-the-us-back-to-your-home-country/garage_sale_1_thumb.jpg' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Garage sale is one way to get rid of your belongings.
+Usually way more fun than selling to random creepy people on Craigslist.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;In my case, I luckily didn&amp;#8217;t own a car or too many items so this process wasn&amp;#8217;t too painful.&lt;/p&gt;
+
+&lt;h3 id='moving_out_of_your_apartment'&gt;Moving out of your apartment&lt;/h3&gt;
+
+&lt;p&gt;This is only applicable if you are renting as I did.&lt;/p&gt;
+
+&lt;p&gt;Specific details depend on your lease agreement, but usually you need to give at least 30-day notice in writing to your landlord.&lt;/p&gt;
+
+&lt;h3 id='401k'&gt;401k&lt;/h3&gt;
+
+&lt;p&gt;If you are enrolled into a 401k plan you have multiple options. Depending on your provider you can leave money in the account (if you ever plan to come back). Other options include transferring money to a similar fund in your home country or taking the money out when your employment has been terminated.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that under normal circumstances you can&amp;#8217;t start a process of early withdrawal until you no longer work for a company that provides your 401k.&lt;/p&gt;
+
+&lt;p&gt;If you take the money out of the account early (before reaching the retirement age) you will also need to pay regular income tax and 10% early withdrawal penalty.&lt;/p&gt;
+
+&lt;p&gt;What is best for you depends on your specific situation, you home country and how much money you have in your account.&lt;/p&gt;
+
+&lt;h3 id='bank_accounts'&gt;Bank Accounts&lt;/h3&gt;
+
+&lt;p&gt;If you are not a citizen most bank require you to have either social security number (SSN) or Individual Taxpayer Identification Number (ITIN) to have an account open with them.&lt;/p&gt;
+
+&lt;p&gt;If you have H1B work visa you mosty likely also have a social security number, because H1B alone it&amp;#8217;s not enough to work in the US. You usually appyly for social security number as soon as you arrive in the US on H1B. Once you get your number it&amp;#8217;s yours for life.&lt;/p&gt;
+
+&lt;p&gt;This means that usually you can keep your bank account open, unless your bank also requires you to have a valid US address. Some banks require that while others allow foreign account holders. It&amp;#8217;s best to check with your bank.&lt;/p&gt;
+
+&lt;h3 id='health_insurance'&gt;Health Insurance&lt;/h3&gt;
+
+&lt;p&gt;Usually when you leave a job your company insurance is not valid anymore. Specifics depend on the company. In some cases insurance is still valid until the end of the month and in case of layovers company might even pay insurance for a couple of more months after the termination.&lt;/p&gt;
+
+&lt;p&gt;Health care can be a big and expensive pain if you are temporarily without a job in the US (e.g. &lt;a href='http://en.wikipedia.org/wiki/Consolidated_Omnibus_Budget_Reconciliation_Act_of_1985'&gt;COBRA&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Luckily this wasn&amp;#8217;t a problem for me because we have a universal healthcare in Slovenia and I returned back immediately after I left my job.&lt;/p&gt;
+
+&lt;h3 id='conclusion'&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;This blog post is pretty specific to my situation, but nevertheless I hope it will help clear things up, save time and act as general overview for other people in a similar situation.&lt;/p&gt;</content>
+	</entry>
     
 	<entry>
 		<title>Visualizing Cassandra nodetool cfhistograms output using a histogram</title>
@@ -629,46 +775,6 @@ Book&lt;/span&gt;&lt;/div&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;See you next month!&lt;/p&gt;</content>
-	</entry>
-    
-	<entry>
-		<title>libcloud Monthly Update (August 2011) - 0.5.2 release, EuroPython 2011 recap, FLOSS weekly</title>
-        <link href="http://www.tomaz.me/2011/08/24/libcloud-monthly-update-august.html" />
-        <id>http://www.tomaz.me/2011/08/24/libcloud-monthly-update-august.html</id>
-		<updated>2011-08-24T00:00:00-07:00</updated>
-		<content type="html">&lt;h2 id='libcloud_monthly_update_august_2011__052_release_europython_2011_recap_floss_weekly'&gt;&lt;a href='/2011/08/24/libcloud-monthly-update-august.html'&gt;libcloud Monthly Update (August 2011) - 0.5.2 release, EuroPython 2011 recap, FLOSS weekly&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;As you might have noticed, I didn&amp;#8217;t write a monthly update post in the last two months. The reason for that is that I have been busy with work and finishing my thesis for a bachelor degree.&lt;/p&gt;
-
-&lt;p&gt;In this post I will try to sum up what has happened during this time and what is currently going on.&lt;/p&gt;
-
-&lt;h3 id='what_has_happened_in_the_past_two_months'&gt;What has happened in the past two months&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Libcloud 0.5.2 has been released.&lt;/p&gt;
-
-&lt;p&gt;This is a primary a bug-fix release, but it also includes two new compute drivers for &lt;em&gt;serverlove.com&lt;/em&gt; and &lt;em&gt;skalicloud.com&lt;/em&gt;. Full changelog and release announcement can be found &lt;a href='http://mail-archives.apache.org/mod_mbox/www-announce/201107.mbox/%3CCAJMHEmK_y8kkyBLJojfuCvx1CPxrTcy95xA3Wp-vZ4U9BhTXDw@mail.gmail.com%3E'&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;EuroPython 2011 sprint was a success.&lt;/p&gt;
-
-&lt;p&gt;At a peek time we had a total of 6 sprinters :) A lot of stuff which has been accomplished at the sprint has been integrated into 0.5.2 release. You can also find slides and recording of my Libcloud talk on &lt;a href='http://ep2011.europython.eu/conference/talks/managing-the-cloud-with-libcloud'&gt;EuroPython 2011 website&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;I have finally met another Libcloud developer in real-life.&lt;/p&gt;
-
-&lt;p&gt;This time I have met &lt;a href='http://empt1e.blogspot.com/'&gt;Roman a.k.a. mirrorbox&lt;/a&gt; in San Francisco. Most of our conversation was not Libcloud related, but we managed to talk a bit about the Libcloud future and topics such as DNS support, problems with our current blocking-model and asynchronous API&amp;#8217;s and possible support for event-based libraries such as Twisted and gevent.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id='what_is_currently_going_on'&gt;What is currently going on&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Me and &lt;strike&gt;Paul Querna&lt;/strike&gt; (Paul Querna can&amp;#8217;t make it since he is away on 7th) will be guests on the &lt;a href='http://twit.tv/FLOSS'&gt;FLOSS weekly&lt;/a&gt; podcast so don&amp;#8217;t forget to tune-in on &lt;strong&gt;September 7, 2011 at 09:30 AM US Pacific Time&lt;/strong&gt;. Show is streamed live, but as always recording will also be available a day or two later.&lt;/li&gt;
-&lt;/ul&gt;</content>
 	</entry>
     
 </feed>
