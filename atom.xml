@@ -5,12 +5,88 @@
 	<link href="http://www.tomaz.me" rel="self" />
 	<link href="http://www.tomaz.me" />
 	<id>http://www.tomaz.me</id>
-	<updated>2013-06-16T00:06:32-07:00</updated>
+	<updated>2013-06-19T08:18:25-07:00</updated>
 	<author>
 		<name>Tomaz Muraus</name>
 		<email>tomaz@tomaz.me</email>
 	</author>
 
+    
+	<entry>
+		<title>Visualizing Cassandra nodetool cfhistograms output using a histogram</title>
+        <link href="http://www.tomaz.me/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html" />
+        <id>http://www.tomaz.me/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html</id>
+		<updated>2013-06-18T00:00:00-07:00</updated>
+		<content type="html">&lt;h2 id='visualizing_cassandra_nodetool_cfhistograms_output_using_a_histogram'&gt;&lt;a href='/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html'&gt;Visualizing Cassandra nodetool cfhistograms output using a histogram&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href='https://cassandra.apache.org/'&gt;Apache Cassandra&lt;/a&gt; includes a lot of functionality and tools which provide good visibility into your cluster health and performance.&lt;/p&gt;
+
+&lt;p&gt;A lot of this performance and health related metrics are exposed over the &lt;a href='https://wiki.apache.org/cassandra/JmxInterface'&gt;JMX interface&lt;/a&gt; and through the &lt;a href='https://wiki.apache.org/cassandra/NodeTool'&gt;nodetool&lt;/a&gt; command line tool. nodetool is a simple wrapper around JMX interface which allows you to access some of the most commonly used attributes through a simple command line interface.&lt;/p&gt;
+
+&lt;p&gt;Another feature which was added recently and is available in Cassandra 1.2 is a feature called &lt;a href='http://www.datastax.com/dev/blog/tracing-in-cassandra-1-2'&gt;request tracing&lt;/a&gt;. Request tracing allows you see exactly what happens during a query executing and exactly how long each step takes.&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/request_tracing.png' title='Example of the request tracing session output. Source:
+http://www.datastax.com/dev/blog/tracing-in-cassandra-1-2'&gt;&lt;img class='inline' src='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/request_tracing_thumb.png' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Example of the request tracing session output.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;This data is very granular and includes everything from how much time it takes to parse the CQL query to how much time it takes to talk to other nodes in the cluster and read data from memory and / or disk.&lt;/p&gt;
+
+&lt;p&gt;This functionality is very powerful, but it&amp;#8217;s only available in Cassandra 1.2.&lt;/p&gt;
+
+&lt;p&gt;Some of the Cassandra clusters we operate here at Rackspace, more specifically on the &lt;a href='http://www.rackspace.com/cloud/monitoring/'&gt;Cloud Monitoring team&lt;/a&gt;, don&amp;#8217;t run Cassandra 1.2 yet. Because of that, I&amp;#8217;m going to focus on another very useful feature which is available in the older versions of Cassandra today.&lt;/p&gt;
+
+&lt;p&gt;This feature is &lt;code&gt;cfhistograms&lt;/code&gt; command exposed by the &lt;code&gt;nodetool&lt;/code&gt; utility.&lt;/p&gt;
+
+&lt;h3 id='cfhistograms_nodetool_command'&gt;cfhistograms nodetool command&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href='http://www.datastax.com/docs/1.2/references/nodetool#nodetool-cfhistograms'&gt;cfhistograms&lt;/a&gt; command prints statistic &lt;a href='https://en.wikipedia.org/wiki/Histogram'&gt;histograms&lt;/a&gt; for a particular column family. The output includes the following information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Distribution of the write latency&lt;/li&gt;
+
+&lt;li&gt;Distribution of the read latency&lt;/li&gt;
+
+&lt;li&gt;Distribution of number of &lt;a href='https://wiki.apache.org/cassandra/ArchitectureSSTable'&gt;sstables&lt;/a&gt; accessed during a read&lt;/li&gt;
+
+&lt;li&gt;Distribution of the row size&lt;/li&gt;
+
+&lt;li&gt;Distribution of number of columns in a row&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/cf_histograms_output.png' title='nodetool cfhistograms command output. Useful but hard to interpret.'&gt;&lt;img class='inline' src='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/cf_histograms_output_thumb.png' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;nodetool cfhistograms command output. Useful but hard to interpret.&lt;/span&gt;&lt;/div&gt;
+&lt;p&gt;This information is very useful, but the problem is that the default output is very convoluted and hard to read. If you Google around, you can find some good posts which explain how to interpret this output (e.g. &lt;a href='http://narendrasharma.blogspot.com/2011/04/cassandra-07x-understanding-output-of.html'&gt;Cassandra 0.7.x - Understanding the output of nodetool cfhistograms&lt;/a&gt;), but nevertheless interpreting the raw command line output is still time consuming and cumbersome.&lt;/p&gt;
+
+&lt;h3 id='visualizing_cfhistograms_output'&gt;Visualizing cfhistograms output&lt;/h3&gt;
+
+&lt;p&gt;Around a year ago I was debugging a performance issues in one of our clusters so I decided to write simple Python script which visualizes the &lt;code&gt;cfhistograms&lt;/code&gt; output using a histogram.&lt;/p&gt;
+
+&lt;p&gt;This script is nothing fancy, but it does it&amp;#8217;s job. In the background it uses a couple of lines of Python and &lt;a href='http://matplotlib.org/'&gt;matplotlib&lt;/a&gt; to convert the raw text output into nice looking histograms.&lt;/p&gt;
+&lt;div class='imginline'&gt;&lt;a class='fancybox' href='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/sstables_histogram.png' title='Histogram generated by the script. It makes identifying the outliers just by glancing over the image a lot
+easier and faster.'&gt;&lt;img class='inline' src='/images/2013-06-18-visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram/sstables_histogram_thumb.png' /&gt;&lt;/a&gt;&lt;span class='image-caption'&gt;Histogram generated by the script. It makes identifying the outliers just by glancing over the image a lot
+easier and faster.&lt;/span&gt;&lt;/div&gt;
+&lt;h4 id='usage'&gt;Usage&lt;/h4&gt;
+
+&lt;p&gt;Script is available as a &lt;a href='https://gist.github.com/Kami/5810229'&gt;gist on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id='1_download_and_chmod_the_script'&gt;1. Download and chmod the script&lt;/h5&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;wget &lt;span class='s2'&gt;&amp;quot;https://gist.github.com/Kami/5810229/raw/189ab7232bcb6db5dd5f6871533bcb5efecdfd84/cassandra_cfhistograms_to_histogram.py&amp;quot;&lt;/span&gt;
+chmod +x cassandra_cfhistograms_to_histogram.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5 id='2_install_the_matplotlib_dependency'&gt;2. Install the matplotlib dependency&lt;/h5&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;pip install matplotlib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5 id='3_run_the_script'&gt;3. Run the script&lt;/h5&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;./cassandra_cfstats_histogram.py --input&lt;span class='o'&gt;=&lt;/span&gt;&amp;lt;path to the file with cfhistograms output&amp;gt; &lt;span class='se'&gt;\&lt;/span&gt;
+                                 --output&lt;span class='o'&gt;=&lt;/span&gt;&amp;lt;directory where the histograms will be saved&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;./cassandra_cfstats_histogram.py --input&lt;span class='o'&gt;=&lt;/span&gt;/home/myuser/cfhistograms_output.txt &lt;span class='se'&gt;\&lt;/span&gt;
+                                 --output&lt;span class='o'&gt;=&lt;/span&gt;/home/myuser/histograms-images/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;All this script does it reads data from the input file, processes it and writes 5 different histogram files to the output directory.&lt;/p&gt;
+
+&lt;h3 id='conclusion'&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I hope you find it useful and this script will allow you to more easily interpret the output of nodetool &lt;code&gt;cfhistograms&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;In the future, I will try to write more about how we used the output of this command in practice to identify and issue and misconfiguration in one of our clusters.&lt;/p&gt;</content>
+	</entry>
     
 	<entry>
 		<title>Libcloud Design Day Recap (improving Libcloud and plans for the future)</title>
@@ -478,7 +554,9 @@ Book&lt;/span&gt;&lt;/div&gt;
         <link href="http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html" />
         <id>http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html</id>
 		<updated>2011-11-27T00:00:00-08:00</updated>
-		<content type="html">&lt;p&gt;First a short-introduction for people who aren&amp;#8217;t familiar with Whiskey.&lt;/p&gt;
+		<content type="html">&lt;h2 id='whiskey_nodejs_test_runner_now_with_more_goodness__introducing_process_runner'&gt;&lt;a href='/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html'&gt;Whiskey Node.js test runner now with more goodness - introducing process runner&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;First a short-introduction for people who aren&amp;#8217;t familiar with Whiskey.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href='https://github.com/cloudkick/whiskey'&gt;Whiskey&lt;/a&gt; is a powerful test runner for Node.js applications. It supports async testing, code coverage, scope leaks reporting, Makefile generation, test timing and lot more. Be sure to check out the &lt;a href='https://github.com/cloudkick/whiskey'&gt;github page&lt;/a&gt; which lists all the features.&lt;/p&gt;
 
@@ -591,76 +669,6 @@ Book&lt;/span&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Me and &lt;strike&gt;Paul Querna&lt;/strike&gt; (Paul Querna can&amp;#8217;t make it since he is away on 7th) will be guests on the &lt;a href='http://twit.tv/FLOSS'&gt;FLOSS weekly&lt;/a&gt; podcast so don&amp;#8217;t forget to tune-in on &lt;strong&gt;September 7, 2011 at 09:30 AM US Pacific Time&lt;/strong&gt;. Show is streamed live, but as always recording will also be available a day or two later.&lt;/li&gt;
 &lt;/ul&gt;</content>
-	</entry>
-    
-	<entry>
-		<title>libcloud Monthly Update (May 2011) - 0.5.0 Release, Graduation, EuroPython</title>
-        <link href="http://www.tomaz.me/2011/05/26/libcloud-monthly-update-may.html" />
-        <id>http://www.tomaz.me/2011/05/26/libcloud-monthly-update-may.html</id>
-		<updated>2011-05-26T00:00:00-07:00</updated>
-		<content type="html">&lt;h2 id='libcloud_monthly_update_may_2011__050_release_graduation_europython'&gt;&lt;a href='/2011/05/26/libcloud-monthly-update-may.html'&gt;libcloud Monthly Update (May 2011) - 0.5.0 Release, Graduation, EuroPython&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;May has been a very busy and important month for us. We have finally manged to finalize and release a long awaited version 0.5.0.&lt;/p&gt;
-
-&lt;p&gt;Part of the reason that we have finally managed to release 0.5.0 this month was that me and &lt;a href='http://paul.querna.org/'&gt;Paul Querna&lt;/a&gt; were present at the Apache Retreat in Ireland where we have spent some time hacking on Libcloud and polishing the last few features which were missing for the release.&lt;/p&gt;
-&lt;div style='text-align: center;'&gt;&lt;a href='http://libcloud.apache.org' target='_blank'&gt;&lt;img align='middle' src='/images/libcloud_logo.png' style='border: none !important;' /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;
-&lt;p&gt;Overall, Libcloud 0.5.0 is a big step forward and represents a big milestone for the project. It includes many new features, improvements and new compute drivers.&lt;/p&gt;
-
-&lt;h3 id='major_changes_in_libcloud_050'&gt;Major changes in Libcloud 0.5.0&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;New cloud Storage API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Version 0.5.0 includes a new storage API which allows you to manage services such as Amazon S3 and Rackspace CloudFiles. Our main priority for this release was defining a good base API and this is also the reason why this release only includes two provider drivers.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;New Load-balancer API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Beside cloud storage we have also added a new API for managing load-balancers (LbaaS). Similar to the storage we were also focusing on defining a good base API so this release only includes Rackspace and GoGrid driver.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Changes in the existing API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;To support the new APIs and services we had to refactor the existing API which means that all of the &amp;#8220;compute&amp;#8221; functionality has been moved to &lt;em&gt;libcloud.compute&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Old module locations (libcloud.deployment, libcloud.providers, libcloud.types, etc.) have been deprecated and will be fully removed in version 0.6.0. At the moment you can still use them, but importing something from the old location will emit a deprecation warning so we encourage our users to update their code to use the new module locations.&lt;/p&gt;
-
-&lt;h4 id='new_compute_drivers'&gt;New compute drivers&lt;/h4&gt;
-
-&lt;p&gt;Among other changes and improvements, this release also includes 5 new compute drivers:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href='http://www.bluebox.net/'&gt;Bluebox&lt;/a&gt; (contributed by Christian Paredes)&lt;/li&gt;
-
-&lt;li&gt;&lt;a href='http://www.gandi.net'&gt;Gandi.net&lt;/a&gt; (contributed by Aymeric Barantal)&lt;/li&gt;
-
-&lt;li&gt;&lt;a href='http://www.nimbusproject.org/'&gt;Nimbus&lt;/a&gt; (contributed by David LaBissoniere)&lt;/li&gt;
-
-&lt;li&gt;&lt;a href='http://www.openstack.org'&gt;OpenStack&lt;/a&gt; (contributed by Roman Bogorodskiy)&lt;/li&gt;
-
-&lt;li&gt;&lt;a href='http://www.opsource.net/Services/Cloud-Hosting'&gt;Opsource.net&lt;/a&gt; cloud (contributed by Joe Miller)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Full release announcement can be found on the &lt;a href='http://mail-archives.apache.org/mod_mbox/libcloud-dev/201105.mbox/%3CBANLkTi=LqBidHLHUwAJSAWSzd-qSpad+dA@mail.gmail.com%3E'&gt;mailing list&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id='graduation_to_a_top_level_project'&gt;Graduation to a Top Level Project&lt;/h3&gt;
-
-&lt;p&gt;Second very important milestone for us this month was graduating from the Apache Incubator to a Top Level Project. This puts us on par with other Apache projects such as Apache Cassandra and Apache Subversion.&lt;/p&gt;
-&lt;div style='text-align: center;'&gt;&lt;a href='http://apache.org/' target='_blank'&gt;&lt;img align='middle' src='/images/apache_logo.png' style='border: none !important;' /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;
-&lt;p&gt;Graduation signifies that both the Apache Libcloud product and community have been well-governed under the Foundation&amp;#8217;s meritocratic, consensus-driven process and principles.&lt;/p&gt;
-
-&lt;p&gt;Graduating to a Top Level Project means that now we have a &lt;a href='http://www.apache.org/dev/pmc.html'&gt;Project Management Committee&lt;/a&gt; (PMC) which will overlook our operations and make sure everything is running smoothly.&lt;/p&gt;
-
-&lt;p&gt;To graduate we also had to select a &lt;a href='http://www.apache.org/foundation/how-it-works.html#pmc-chair'&gt;project chair&lt;/a&gt;. Other members have proposed me for this role and I have accepted it. My primary role as a project chair will be to communicate with the board (quarterly status reports, etc.) and making sure there aren&amp;#8217;t any conflicts and the project is running smoothly.&lt;/p&gt;
-
-&lt;p&gt;As part of graduation we also had to move our website and SVN repositories. You can find all the new address in &lt;a href='http://mail-archives.apache.org/mod_mbox/libcloud-dev/201105.mbox/%3CBANLkTinTq7RrKpe8SMmSeKKW8yQpu-77Ew@mail.gmail.com%3E'&gt;this thread on the mailing list&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Official graduation announcement / press release can be found on the Apache blog - &lt;a href='https://blogs.apache.org/foundation/entry/the_apache_software_foundation_announces12'&gt;The Apache Software Foundation Announces Apache Libcloud as a Top-Level Project&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id='libcloud_at_europython_2011_in_florence_italy'&gt;Libcloud at EuroPython 2011 in Florence, Italy&lt;/h3&gt;
-&lt;div style='text-align: center;'&gt;&lt;a href='http://ep2011.europython.eu/' target='_blank'&gt;&lt;img align='middle' src='/images/europython_logo.png' style='border: none !important;' /&gt;&lt;/a&gt;&lt;/div&gt;&lt;br /&gt;
-&lt;p&gt;I will be at EuroPython in Italy next month where I will give an &lt;a href='http://ep2011.europython.eu/conference/talks/managing-the-cloud-with-libcloud'&gt;introductory talk about Libcloud&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Beside giving a talk we will also host a development sprint there. This is a great opportunity for anyone who wants to contribute to the project or learn something new to join us. I will post more details about the sprint in the upcoming weeks on the &lt;a href='http://libcloud.apache.org/devinfo.html'&gt;libcloud mailing list&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So that is it for May. See you next month when I will hopefully be able to report about multiple new storage and compute drivers and other improvements.&lt;/p&gt;</content>
 	</entry>
     
 </feed>

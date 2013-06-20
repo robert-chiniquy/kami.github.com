@@ -9,6 +9,8 @@ tags:
   - testing
 ---
 
+## [{{page.title}}][1]
+
 First a short-introduction for people who aren't familiar with Whiskey.
 
 [Whiskey][2] is a powerful test runner for Node.js applications. It supports

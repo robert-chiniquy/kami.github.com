@@ -181,3 +181,7 @@ img.inline {
   display: block;
   margin-top: 10px;
 }
+
+div.highlight {
+  margin-top: 10px;
+}
