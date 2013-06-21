@@ -185,3 +185,7 @@ img.inline {
 div.highlight {
   margin-top: 10px;
 }
+
+div.comments {
+    margin-top: 20px !important;
+}

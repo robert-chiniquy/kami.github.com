@@ -16,4 +16,11 @@ layout: default
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
     <!-- AddThis Button END -->
     <div class="posttags">Tags: {{ page | tags }}</div>
+    <div class="comments">
+      <div id="disqus_thread"></div>
+    </div>
+
+    {% javascript_asset_tag disqus %}
+      - /_assets/javascript/disqus.js
+    {% endjavascript_asset_tag %}
 </div>
