@@ -5,7 +5,7 @@
 	<link href="http://www.tomaz.me" rel="self" />
 	<link href="http://www.tomaz.me" />
 	<id>http://www.tomaz.me</id>
-	<updated>2013-06-20T08:46:55-07:00</updated>
+	<updated>2013-06-21T12:55:40+02:00</updated>
 	<author>
 		<name>Tomaz Muraus</name>
 		<email>tomaz@tomaz.me</email>
@@ -16,7 +16,7 @@
 		<title>Work visa and moving from the US back to your home country</title>
         <link href="http://www.tomaz.me/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html" />
         <id>http://www.tomaz.me/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html</id>
-		<updated>2013-06-20T00:00:00-07:00</updated>
+		<updated>2013-06-20T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='work_visa_and_moving_from_the_us_back_to_your_home_country'&gt;&lt;a href='/2013/06/20/work-visa-and-moving-from-the-us-back-to-your-home-country.html'&gt;Work visa and moving from the US back to your home country&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;In my &lt;a href='/2013/06/09/time-for-new-challenges.html'&gt;recent post&lt;/a&gt; I wrote that I&amp;#8217;m leaving my current job and moving back to Slovenia to start working on my own startup. In this post I&amp;#8217;m going to provide a high level overview of a process and most of the bureaucratic things which are involved if you have a some kind of work visa (H1B in my case) and you want to move back to your home country.&lt;/p&gt;
@@ -162,7 +162,7 @@ Usually way more fun than selling to random creepy people on Craigslist.&lt;/spa
 		<title>Visualizing Cassandra nodetool cfhistograms output using a histogram</title>
         <link href="http://www.tomaz.me/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html" />
         <id>http://www.tomaz.me/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html</id>
-		<updated>2013-06-18T00:00:00-07:00</updated>
+		<updated>2013-06-18T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='visualizing_cassandra_nodetool_cfhistograms_output_using_a_histogram'&gt;&lt;a href='/2013/06/18/visualizing-cassandra-nodetool-cfhistograms-output-using-a-histogram.html'&gt;Visualizing Cassandra nodetool cfhistograms output using a histogram&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href='https://cassandra.apache.org/'&gt;Apache Cassandra&lt;/a&gt; includes a lot of functionality and tools which provide good visibility into your cluster health and performance.&lt;/p&gt;
@@ -238,7 +238,7 @@ chmod +x cassandra_cfhistograms_to_histogram.py
 		<title>Libcloud Design Day Recap (improving Libcloud and plans for the future)</title>
         <link href="http://www.tomaz.me/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html" />
         <id>http://www.tomaz.me/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html</id>
-		<updated>2013-06-12T00:00:00-07:00</updated>
+		<updated>2013-06-12T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='libcloud_design_day_recap_improving_libcloud_and_plans_for_the_future'&gt;&lt;a href='/2013/06/12/libcloud-design-day-recap-improving-libcloud-and-plans-for-the-future.html'&gt;Libcloud Design Day Recap (improving Libcloud and plans for the future)&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Yesterday we hosted &lt;a href='https://lcdesignday.eventbrite.com'&gt;Libcloud Design Day and Meetup&lt;/a&gt; at the &lt;a href='http://rackertalent.com/sanfrancisco/'&gt;Rackspace San Francisco office&lt;/a&gt;.&lt;/p&gt;
@@ -344,7 +344,7 @@ chmod +x cassandra_cfhistograms_to_histogram.py
 		<title>Time for new challenges</title>
         <link href="http://www.tomaz.me/2013/06/09/time-for-new-challenges.html" />
         <id>http://www.tomaz.me/2013/06/09/time-for-new-challenges.html</id>
-		<updated>2013-06-09T00:00:00-07:00</updated>
+		<updated>2013-06-09T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='time_for_new_challenges'&gt;&lt;a href='/2013/06/09/time-for-new-challenges.html'&gt;Time for new challenges&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;For as long as I can remember I have been interested in startups and growing a sustainable business. I have finally decided to take the next step. I&amp;#8217;m leaving Rackspace and moving back to Slovenia to start working on my own startup.&lt;/p&gt;
@@ -421,7 +421,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>Hosting APT repository on Rackspace CloudFiles</title>
         <link href="http://www.tomaz.me/2012/07/22/hosting-apt-repository-on-rackspace-cloud-files.html" />
         <id>http://www.tomaz.me/2012/07/22/hosting-apt-repository-on-rackspace-cloud-files.html</id>
-		<updated>2012-07-22T00:00:00-07:00</updated>
+		<updated>2012-07-22T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='hosting_apt_repository_on_rackspace_cloudfiles'&gt;&lt;a href='/2012/07/22/hosting-apt-repository-on-rackspace-cloud-files.html'&gt;Hosting APT repository on Rackspace CloudFiles&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;In this post I will describe how to host APT repository on &lt;a href='http://www.rackspace.com/cloud/cloud_hosting_products/files/'&gt;Rackspace Cloud Files&lt;/a&gt;.&lt;/p&gt;
@@ -516,7 +516,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>Libcloud Update (April 2012) - 0.8.0, 0.9.1, GSoC</title>
         <link href="http://www.tomaz.me/2012/04/28/libcloud-monthly-update-april-2012-0-8-0-0-9-1-gsoc.html" />
         <id>http://www.tomaz.me/2012/04/28/libcloud-monthly-update-april-2012-0-8-0-0-9-1-gsoc.html</id>
-		<updated>2012-04-28T00:00:00-07:00</updated>
+		<updated>2012-04-28T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='libcloud_update_april_2012__080_091_gsoc'&gt;&lt;a href='/2012/04/28/libcloud-monthly-update-april-2012-0-8-0-0-9-1-gsoc.html'&gt;Libcloud Update (April 2012) - 0.8.0, 0.9.1, GSoC&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Welcome to Libcloud April 2012 update post. Sorry for skipping a couple of months, but I have been pretty busy again. In any case, here is a short but sweet April update.&lt;/p&gt;
@@ -544,7 +544,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>Libcloud Monthly Update (December 2011) - 0.6.1, 0.6.2, 0.7.1, Python 3</title>
         <link href="http://www.tomaz.me/2011/12/07/libcloud-montly-update-december-2011.html" />
         <id>http://www.tomaz.me/2011/12/07/libcloud-montly-update-december-2011.html</id>
-		<updated>2011-12-07T00:00:00-08:00</updated>
+		<updated>2011-12-07T00:00:00+01:00</updated>
 		<content type="html">&lt;h2 id='libcloud_monthly_update_december_2011__061_062_071_python_3'&gt;&lt;a href='/2011/12/07/libcloud-montly-update-december-2011.html'&gt;Libcloud Monthly Update (December 2011) - 0.6.1, 0.6.2, 0.7.1, Python 3&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Past few months have been pretty busy here and you may have noticed that I didn&amp;#8217;t post a monthly update post in the last two months. This doesn&amp;#8217;t mean nothing has been going on though! In fact, quite the contrary. Last few months have been very busy and we have shipped two new releases and a voting thread for a new 0.7.1 release was just started a few days ago. More about that bellow.&lt;/p&gt;
@@ -574,7 +574,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>Lessons learned while porting Libcloud to Python 3</title>
         <link href="http://www.tomaz.me/2011/12/03/lessons-learned-while-porting-libcloud-to-python-3.html" />
         <id>http://www.tomaz.me/2011/12/03/lessons-learned-while-porting-libcloud-to-python-3.html</id>
-		<updated>2011-12-03T00:00:00-08:00</updated>
+		<updated>2011-12-03T00:00:00+01:00</updated>
 		<content type="html">&lt;h2 id='lessons_learned_while_porting_libcloud_to_python_3'&gt;&lt;a href='/2011/12/03/lessons-learned-while-porting-libcloud-to-python-3.html'&gt;Lessons learned while porting Libcloud to Python 3&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Yesterday after seeing and being inspired by the &lt;a href='http://news.ycombinator.com/item?id=3305021'&gt;Django Python 3 port&lt;/a&gt; news, I have decided it&amp;#8217;s finally time to port &lt;a href='http://libcloud.apache.org/'&gt;Libcloud&lt;/a&gt; to Python 3. There have already been some talks about doing that in the past, but nobody actually managed to make a lot of progress.&lt;/p&gt;
@@ -699,7 +699,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>Whiskey Node.js test runner now with more goodness - introducing process runner</title>
         <link href="http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html" />
         <id>http://www.tomaz.me/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html</id>
-		<updated>2011-11-27T00:00:00-08:00</updated>
+		<updated>2011-11-27T00:00:00+01:00</updated>
 		<content type="html">&lt;h2 id='whiskey_nodejs_test_runner_now_with_more_goodness__introducing_process_runner'&gt;&lt;a href='/2011/11/27/whiskey-now-with-more-goodness-introducing-process-runner.html'&gt;Whiskey Node.js test runner now with more goodness - introducing process runner&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;First a short-introduction for people who aren&amp;#8217;t familiar with Whiskey.&lt;/p&gt;
@@ -739,7 +739,7 @@ Book&lt;/span&gt;&lt;/div&gt;
 		<title>libcloud Monthly Update (September 2011) - FLOSS weekly, OpenStack driver improvements, DNS API</title>
         <link href="http://www.tomaz.me/2011/09/24/libcloud-monthly-update-september-floss-weekly-openstack-improvements-dns-api.html" />
         <id>http://www.tomaz.me/2011/09/24/libcloud-monthly-update-september-floss-weekly-openstack-improvements-dns-api.html</id>
-		<updated>2011-09-24T00:00:00-07:00</updated>
+		<updated>2011-09-24T00:00:00+02:00</updated>
 		<content type="html">&lt;h2 id='libcloud_monthly_update_september_2011__floss_weekly_openstack_driver_improvements_dns_api'&gt;&lt;a href='/2011/09/24/libcloud-monthly-update-september-floss-weekly-openstack-improvements-dns-api.html'&gt;libcloud Monthly Update (September 2011) - FLOSS weekly, OpenStack driver improvements, DNS API&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;Without further ado here is a Libcloud monthly update for September 2011.&lt;/p&gt;
