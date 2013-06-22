@@ -35,6 +35,7 @@ are basically no high level resources you could use to know what to expect.
 I recently went through this process myself so I have fresh and first hand
 experience. Actual process involved a lot digging and reading through long
 and mostly boring legal documents.
+
 I hope this post will act as a high level overview, help other people in a
 similar situation and give a better idea of how the whole thing looks like
 to people who never went through a process like this personally.
@@ -53,12 +54,12 @@ factors you nor lawyers can control, but at least you are not on your own.
 ### Disclaimer
 
 First I want to add that I'm going to talk about my specific case and people
-who hold H1B visa and the same things might not apply to other type of visas
+who hold H1B visa. The same things might not apply to other type of visas
 valid for work.
 
-**Second of all, I'm not a lawyer nor a tax advisor so please, if you are not sure
-about something, do your own research and consult your lawyer and / or
-tax advisor before doing something based just on this blog post.**
+**Second of all, I'm not a lawyer nor a tax adviser so please, if you are not
+sure about something, do your own research and consult your lawyer and / or
+tax adviser before doing something based just on this blog post.**
 
 ### Why move outside of the US in the first place?
 
@@ -229,14 +230,14 @@ how much money you have in your account.
 
 ### Bank Accounts
 
-If you are not a citizen most bank require you to have either social security
+If you are not a citizen, most banks require you to have either social security
 number (SSN) or Individual Taxpayer Identification Number (ITIN) to have an
 account open with them.
 
-If you have H1B work visa you mosty likely also have a social security number,
-because H1B alone it's not enough to work in the US. You usually appyly for
-social security number as soon as you arrive in the US on H1B. Once you get
-your number it's yours for life.
+If you have an H1B work visa you most likely also have a social security
+number, because H1B alone it's not enough to work in the US. You usually
+apply for social security number as soon as you arrive in the US on H1B.
+Once you get your number, it's yours for life.
 
 This means that usually you can keep your bank account open, unless your bank
 also requires you to have a valid US address. Some banks require that while
